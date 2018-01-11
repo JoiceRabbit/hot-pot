@@ -11,4 +11,12 @@
 
 ##### 修改接口api/userInfo/setAddress
   1. 请求参数sex值为true（女）/false(男）
+  
+### 2018-01-11
+
+##### 修改接口api/index
+  1. sliders数组中去掉Url
+  
+##### 修改接口/api/user/getVerCode
+  1. 验证码验证在后端操作，data只返回send：true/false表示验证码发送成功与否
 
