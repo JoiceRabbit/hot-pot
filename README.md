@@ -19,4 +19,7 @@
   
 ##### 修改接口/api/user/getVerCode
   1. 验证码验证在后端操作，data只返回send：true/false表示验证码发送成功与否
+  
+##### 修改接口/api/index
+  1. carriage替换为startAmount（起送费）和trans（配送费）2个参数
 
