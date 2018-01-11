@@ -22,4 +22,6 @@
   
 ##### 修改接口/api/index
   1. carriage替换为startAmount（起送费）和trans（配送费）2个参数
-
+  
+##### 修改接口api/userInfo/setAddress
+  1. 请求参数sex值先生/女士
