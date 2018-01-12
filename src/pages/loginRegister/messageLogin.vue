@@ -6,10 +6,15 @@
     </div>
     <div class="message-input-con">
       <code-input :codeShow="codeShow"
-                  @send="handleSendCode"></code-input>
+                  :countDown="countDown"
+                  @send="handleSendCode"
+                  @login="handleLogin"
+                  ref="code"></code-input>
     </div>
     <p class="notice">温馨提示：未注册同城火锅帐号的手机号，登录时将自动注册，且代表您已同意<span>《用户服务协议》</span></p>
-    <div class="login-btn">登录</div>
+    <div class="login-btn" 
+         @click="handleLoginClick"
+         :class="{'login-active': loginShow}">登录</div>
     <tool-tip :errMessage="errMessage"
               v-show="errMessageShow"
               @miss="handleErrMiss"></tool-tip>
@@ -25,16 +30,27 @@
     name: 'messageLogin',
     data () {
       return {
-        phoneNum: '',
-        codeShow: false,
-        errMessage: '',
-        errMessageShow: false
+        phoneNum: '', //  手机号
+        errMessage: '', //  错误或提示信息
+        code: '', //  验证码
+        codeShow: false, // 发送验证码是否展示
+        errMessageShow: false, //  错误或提示是否展示
+        sendCode: false, //  是否成功发送验证码
+        login: false,  // 验证码正则验证
+        loginShow: false, // 登录按钮是否显示
+        checkNum: false, // 手机号正则验证
+        countDown: false // 验证码倒计时是否开始
       }
     },
     components: {
       PhoneInput,
       CodeInput,
       ToolTip
+    },
+    watch: {
+      codeShow () {
+        this.showLoginBtn()
+      }
     },
     methods: {
       handleErrMiss () {
@@ -43,25 +59,83 @@
       },
       handleCodeShow (e) {
         this.codeShow = e.codeShow
+        this.checkNum = this.$refs.phone.checkPhoneNum()
       },
       handleSendCode () {
-        if (this.$refs.phone.checkPhoneNum()) {
-          axios.post('/api/user/getVerCode', {
-            tel: this.phoneNum
-          })
-          .then(this.handleSendCodeSucc.bind(this))
-          .catch(this.handleSendCodeErr.bind(this))
+        if (!this.countDown) {
+          if (this.$refs.phone.checkPhoneNum()) {
+            axios.post('/api/user/getVerCode', {
+              tel: this.phoneNum
+            })
+            .then(this.handleSendCodeSucc.bind(this))
+            .catch(this.handleSendCodeErr.bind(this))
+          } else {
+            this.showNotice('请输入正确手机号')
+            this.codeShow = false
+          }
         } else {
-          this.errMessage = '请输入正确手机号'
-          this.errMessageShow = true
-          this.codeShow = false
+          this.showNotice('暂时无法发送')
         }
       },
-      handleSendCodeSucc (res) {
-        console.log(res.data.ret)
+      showNotice (str) {
+        this.errMessageShow = true
+        this.errMessage = str
       },
-      handleSendCodeErr (err) {
-        console.log(err)
+      handleSendCodeSucc (res) {
+        if (res.data.ret) {
+          if (res.data.data.send) {
+            this.sendCode = true
+            this.showNotice('发送成功')
+            this.countDown = true
+          } else {
+            this.sendCode = false
+            this.showNotice('发送失败，请检查您的手机号')
+          }
+        } else {
+          this.sendCode = false
+          this.showNotice('服务器异常')
+        }
+      },
+      handleSendCodeErr () {
+        this.showNotice('系统异常')
+      },
+      handleLogin (e) {
+        this.login = e.login
+        this.code = e.code
+        this.showLoginBtn()
+      },
+      handleLoginClick () {
+        if (this.loginShow) {
+          axios.post('/api/user/loginVerCode', {
+            tel: this.phoneNum,
+            code: this.code
+          })
+          .then(this.handleLoginClickSucc.bind(this))
+          .catch(this.handleLoginClickErr.bind(this))
+        } else {
+          this.showNotice('手机号或验证码格式不正确，验证码为6位数字')
+        }
+      },
+      showLoginBtn () {
+        console.log('phoneNum' + this.codeShow)
+        if (this.login && this.sendCode && this.codeShow) {
+          this.loginShow = true
+        } else {
+          this.loginShow = false
+        }
+      },
+      handleLoginClickSucc (res) {
+        if (res && res.data && res.data.data) {
+          const data = res.data.data
+          if (data.login) {
+            console.log(data.tel)
+          }
+        } else {
+          this.showNotice('系统异常')
+        }
+      },
+      handleLoginClickErr () {
+        this.showNotice('系统异常')
       }
     }
   }
@@ -85,4 +159,6 @@
     text-align: center
     color: #fff
     background: #b0d5a2
+  .login-active
+    background: #4cd96f
 </style>

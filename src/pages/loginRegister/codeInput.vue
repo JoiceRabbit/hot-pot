@@ -1,10 +1,14 @@
 <template>
   <div>
-    <input class="message-input" type="text" placeholder="验证码">
+    <input class="message-input" 
+           type="text" 
+           placeholder="验证码"
+           @input="handleCode"
+           v-model="code">
     <div class="send-code" 
-          :class="{'code-active': codeShow}"
+          :class="{'code-active': codeShow, 'count-down': count}"
           @click="handleSendCode">
-        发送验证码</div>
+        {{text}}</div>
   </div>
 </template>
 
@@ -12,21 +16,64 @@
   // import axios from 'axios'
   export default {
     name: 'CodeInput',
+    data () {
+      return {
+        code: '',
+        text: '发送验证码',
+        count: false
+      }
+    },
     props: {
-      codeShow: Boolean
+      codeShow: Boolean,
+      countDown: Boolean
+    },
+    watch: {
+      countDown () {
+        this.count = this.countDown
+        if (this.count) {
+          this.text = '60s'
+          setInterval(() => {
+            if (parseInt(this.text, 10) === 0) {
+              clearInterval()
+              this.count = false
+              this.text = '发送验证码'
+            } else {
+              this.text = parseInt(this.text, 10) - 1 + 's'
+            }
+          }, 1000)
+        } else {
+          //
+        }
+      }
     },
     methods: {
       handleSendCode () {
         if (this.codeShow) {
           this.$emit('send')
-          //  此处应弹出提示提醒用户手机号不合法
         }
       },
-      handleSendCodeSucc (res) {
-        console.log(res.data.ret)
+      handleCode (e) {
+        this.code = e.target.value
+        if (this.code.length >= 6) {
+          this.code = this.code.slice(0, 6)
+          if (this.checkCode()) {
+            this.$emit('login', {
+              login: true,
+              code: this.code
+            })
+          } else {
+            this.$emit('login', {
+              login: false
+            })
+          }
+        } else {
+          this.$emit('login', {
+            login: false
+          })
+        }
       },
-      handleSendCodeErr (e) {
-        console.log(2)
+      checkCode () {
+        return /^\d{6}$/.test(this.code)
       }
     }
   }
@@ -54,4 +101,7 @@
     background: #b0d5a2
   .code-active
     background: #4cd96f
+  .count-down
+    background: #666
+    color: #333
 </style>

@@ -23,14 +23,14 @@
           this.phoneNum = this.phoneNum.slice(0, 11)
           this.$emit('codeShow', {
             codeShow: true,
-            phoneNum: this.phoneNum
+            phoneNum: this.phoneNum,
+            check: this.checkPhoneNum()
           })
-          // this.codeShow = true
         } else {
           this.$emit('codeShow', {
-            codeShow: false
+            codeShow: false,
+            check: this.checkPhoneNum()
           })
-          // this.codeShow = false
         }
       },
       checkPhoneNum () {
