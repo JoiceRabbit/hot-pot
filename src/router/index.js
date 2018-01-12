@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from 'pages/home/index'
 import Login from 'pages/loginRegister/index'
+import Shop from 'pages/shop/index'
 
 Vue.use(Router)
 
@@ -16,6 +17,12 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/shop/:shopId',
+      name: 'shop',
+      component: Shop,
+      props: true
     }
   ]
 })
