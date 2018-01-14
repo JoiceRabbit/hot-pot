@@ -38,11 +38,7 @@ module.exports = {
       '@': resolve('src'),
       'pages': resolve('src/pages'),
       'styles': resolve('src/assets/styles'),
-<<<<<<< HEAD
       'components': resolve('src/components'),
-=======
-      'components': resolve('src/components')
->>>>>>> 180102-leon-login
     }
   },
   module: {
