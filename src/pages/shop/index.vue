@@ -1,7 +1,7 @@
 <template>
-  <div class="shop">
+  <div class="shop" ref="shop">
     <div class="shop-top">
-      <div class="iconfont back">&#xe624;</div>
+      <div class="iconfont back" @click="handleGoBack">&#xe624;</div>
       <div class="logo-con">
         <img :src="shopInfo.logo" alt="" class="logo-img">
       </div>
@@ -69,7 +69,7 @@
     },
     methods: {
       getShopInfo () {
-        axios.get('/api/shop/index', {
+        axios.get('/api/shop/index1.json', {
           shopId: this.shopId
         })
         .then(this.handleGetShopInfoSucc.bind(this))
@@ -91,33 +91,34 @@
       handleGetShopInfoErr () {
         console.log('error')
       },
-      test () {
-        console.log(this.orderActive, this.evaluteActive, this.introActive)
-      },
       handleOrderTabClick () {
         this.componentActive = 'ShopOrder'
         this.orderActive = true
         this.evaluteActive = false
         this.introActive = false
-        this.test()
       },
       handleEvaluteTabClick () {
         this.componentActive = 'ShopEvalute'
         this.orderActive = false
         this.evaluteActive = true
         this.introActive = false
-        this.test()
       },
       handleIntroTabClick () {
         this.componentActive = 'ShopIntro'
         this.orderActive = false
         this.evaluteActive = false
         this.introActive = true
-        this.test()
+      },
+      handleGoBack () {
+        this.$router.go(-1)
       }
     },
     created () {
       this.getShopInfo()
+    },
+    beforeRouteLeave (to, from, next) {
+      this.$refs.shop.style.display = 'none'
+      next()
     }
   }
 </script>
