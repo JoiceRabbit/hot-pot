@@ -2,7 +2,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import FastClick from 'fastclick'
 import router from './router'
+<<<<<<< HEAD
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueLazyLoad from 'vue-lazyload'
 
@@ -20,6 +22,8 @@ Vue.use(VueLazyLoad, {
   loading: 'http://img.zcool.cn/community/0176af5844caf4a8012060c87e987f.gif',
   attempt: 1
 })
+Vue.config.productionTip = false
+FastClick.attach(document.body)
 
 /* eslint-disable no-new */
 new Vue({
