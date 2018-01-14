@@ -31,5 +31,15 @@
       "title": "周边优惠",
       "desc": "0元好物在这里",
       "imgUrl": "https://fuss10.elemecdn.com/5/10/2351e989d4171479ba0d7b5c06053jpeg.jpeg?imageMogr/format/webp/"       
+    }],
+    "imgs": [{
+      "id": "8",
+      "imgUrl": "/static/images/find1.jpg"
+    }, {
+      "id": "9",
+      "imgUrl": "/static/images/find2.jpg"
+    }, {
+      "id": "90",
+      "imgUrl": "/static/images/find2.jpg"
     }]
 }

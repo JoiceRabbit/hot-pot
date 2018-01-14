@@ -1,5 +1,5 @@
 <template>
-  <div class="find">
+  <div class="find" ref="findShow">
     <header class="find-con">
       <p class="back iconfont">&#xe624;</p>
       <div class="find">发现</div>
@@ -30,6 +30,11 @@
         </div>
       </div>
     </main>
+    <div class="imgs-con">
+      <div class="img-item" v-for="imgItem in imgs" :key="imgItem.id">
+        <img :src="imgItem.imgUrl" class="img">
+      </div>       
+    </div>
     <footer-tab></footer-tab>
   </div>
 </template>
@@ -42,7 +47,9 @@
     data () {
       return {
         lists: [],
-        errMsg: ''
+        imgs: [],
+        errMsg: '',
+        findShow: true
       }
     },
     components: {
@@ -54,27 +61,17 @@
            .catch(this.handleGetListErr.bind(this))
     },
     methods: {
-      getLists () {
-        console.log(this.list)
-      },
       handleGetListSucc (res) {
-        if (res) {
-          if (res.data) {
-            if (res.data.ret && res.data.data) {
-              res.data.data.forEach((value, index) => {
-                let list = Math.floor(index / 3)
-                if (!this.lists[list]) {
-                  this.lists[list] = []
-                }
-                this.lists[list].push(value)
-              })
-              this.lists = Object.assign({}, this.lists)
-            } else {
-              this.handleGetListErr()
+        if (res.data && res.data.ret && res.data.data) {
+          res.data.imgs && (this.imgs = res.data.imgs)
+          res.data.data.forEach((value, index) => {
+            let list = Math.floor(index / 3)
+            if (!this.lists[list]) {
+              this.lists[list] = []
             }
-          } else {
-            this.handleGetListErr()
-          }
+            this.lists[list].push(value)
+          })
+          this.lists = Object.assign({}, this.lists)
         } else {
           this.handleGetListErr()
         }
@@ -82,6 +79,10 @@
       handleGetListErr () {
         this.errMsg = '服务器开小差了T_T,请尝试刷新页面'
       }
+    },
+    beforeRouteLeave (to, from, next) {
+      this.$refs.findShow.style.display = 'none'
+      next()
     }
   }
 </script>
@@ -112,6 +113,19 @@
         margin: 0 auto;
         width: 2rem      
         ellipsis()
+    .imgs-con
+        margin-top: .2rem
+        background: #fff
+        display: flex
+        flex-direction: column
+        .img-item
+          margin-bottom: .15rem
+          width: 100%
+          height: 0
+          padding-bottom: 22.8%
+          overflow: hidden
+          .img
+            width: 100%
     .content-con
       flex: 1
       display: flex
