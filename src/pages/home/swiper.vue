@@ -19,8 +19,11 @@
         swiperOption: {
           pagination: '.swiper-pagination',
           loop: true,
-          autoplay: true,
-          speed: 2500
+          autoplay: 3000,
+          speed: 2500,
+          observer: true,
+          observerParents: true,
+          initialSlide: 1
           // effect: 'cube'
         }
       }
@@ -34,10 +37,9 @@
     width: 100%
     overflow: hidden
     height: 0
-    padding-bottom: 45.5%
+    padding-bottom: 31.25%
     .banner-img
       width: 100%
-      height: 3rem
     .swiper-pagination
       bottom: .03rem
       & >>> .swiper-pagination-bullet

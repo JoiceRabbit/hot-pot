@@ -31,9 +31,11 @@
       display: flex
       flex-direction: column
       align-items: center
+      padding: 0 0.2rem
+      box-sizing: border-box
       .img-con
-        width: 3.28rem
         height: 0
+        width: 100%
         padding-bottom: 52.44%
         overflow: hidden
         .img

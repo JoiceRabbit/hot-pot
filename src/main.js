@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueLazyLoad from 'vue-lazyload'
-import AMap from 'vue-amap'
 
 import 'styles/base/reset.css'
 import 'styles/base/border.css'
@@ -21,7 +20,6 @@ Vue.use(VueLazyLoad, {
   loading: 'http://img.zcool.cn/community/0176af5844caf4a8012060c87e987f.gif',
   attempt: 1
 })
-Vue.use(AMap)
 
 /* eslint-disable no-new */
 new Vue({

@@ -56,7 +56,7 @@
       FooterTab
     },
     created () {
-      axios.get('/static/find.json')
+      axios.get('/api/find.json')
            .then(this.handleGetListSucc.bind(this))
            .catch(this.handleGetListErr.bind(this))
     },
@@ -97,7 +97,7 @@
     .find-con
       height: .88rem
       background: $bgColor
-      font-size: .37rem
+      font-size: .36rem
       color: #fff  
       text-align: center
       line-height: .88rem
