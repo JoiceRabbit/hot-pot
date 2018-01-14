@@ -6,12 +6,12 @@ import FastClick from 'fastclick'
 import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueLazyLoad from 'vue-lazyload'
-
 import 'styles/base/reset.css'
 import 'styles/base/border.css'
 import 'styles/base/iconfont/iconfont.css'
 import 'swiper/dist/css/swiper.css'
 import 'styles/base/animate.css'
+import 'styles/iconfont/iconfont.css'
 
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)

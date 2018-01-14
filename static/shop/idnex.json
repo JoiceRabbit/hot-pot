@@ -1,0 +1,48 @@
+{
+  "ret": true,
+  "errMsg": "",
+  "data": {
+    "shopInfo": {
+      "shopId": "123",
+      "logo": "https://fuss10.elemecdn.com/7/62/f091f6aa61ee84329f0a1cbf07a31png.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "桃太郎小火锅（北京店）",
+      "favComments": "99.1",
+      "orders": "978",
+      "carriage": ["15", "8"],
+      "sendTime": "45",
+      "distance": "1.56",
+      "notice": "新店开业，试吃立减50，感冒了有点发烧，很难受",
+      "intro": {
+        "pics": [
+          "https://fuss10.elemecdn.com/b/14/d58a366e204dad6686c751ee69d31jpeg.jpeg?imageMogr/format/webp/thumbnail/!200x200r/gravity/Center/crop/200x200/",
+          "https://fuss10.elemecdn.com/4/2b/e45dde56759417bd255fe8edb97bdjpeg.jpeg?imageMogr/format/webp/thumbnail/!200x200r/gravity/Center/crop/200x200/",
+          "https://fuss10.elemecdn.com/a/29/6fa0edd781dd93764f5e6bc083ee0jpeg.jpeg?imageMogr/format/webp/thumbnail/!200x200r/gravity/Center/crop/200x200/",
+          "https://fuss10.elemecdn.com/c/1a/3f6bc617254f95956b66e3c77c1b6jpeg.jpeg?imageMogr/format/webp/thumbnail/!200x200r/gravity/Center/crop/200x200/"
+        ],            
+        "infomation": "暂无简介",
+        "phone": "4008755655",
+        "address": "北京市朝阳区朝外大街乙6号1层0109",
+        "openingHours": "09:30-21:30"
+      },
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "5",
+          "cate": "moneyOff",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true
+          }, {
+          "id": "6",
+          "cate": "specialOffer",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true
+          }, {
+          "id": "7",
+          "cate": "snack",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false
+        }]  
+      }
+    }
+  }
+}
