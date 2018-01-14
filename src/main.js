@@ -4,7 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import FastClick from 'fastclick'
 import router from './router'
-<<<<<<< HEAD
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueLazyLoad from 'vue-lazyload'
 
