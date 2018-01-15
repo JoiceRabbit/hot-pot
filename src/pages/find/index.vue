@@ -60,6 +60,9 @@
            .then(this.handleGetListSucc.bind(this))
            .catch(this.handleGetListErr.bind(this))
     },
+    activated () {
+      this.$refs.findShow.style.display = 'block'
+    },
     methods: {
       handleGetListSucc (res) {
         if (res.data && res.data.ret && res.data.data) {

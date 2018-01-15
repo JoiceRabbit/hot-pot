@@ -9,8 +9,8 @@ import Login from 'pages/loginRegister/index'
 import Shop from 'pages/shop/index'
 
 Vue.use(Router)
-
-export default new Router({
+let y = null
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -46,3 +46,17 @@ export default new Router({
     }
   ]
 })
+router.afterEach((to, from, next) => {
+  if (from.name === 'index') {
+    y = document.documentElement.scrollTop
+  }
+
+  if (to.name === 'index') {
+    setTimeout(() => {
+      document.documentElement.scrollTop = y
+    }, 0)
+  } else {
+    document.documentElement.scrollTop = 0
+  }
+})
+export default router

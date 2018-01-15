@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index" ref="indexShow">
     <header class="header">
       <span class="position-icon iconfont">&#xe603;</span>
       <span class="position">{{position || "定位中..."}}</span>
@@ -42,6 +42,9 @@
     },
     created () {
       this.getIndexData()
+    },
+    activated () {
+      this.$refs.indexShow.style.display = 'block'
     },
     methods: {
       getIndexData () {

@@ -30,6 +30,9 @@
     created () {
       this.getData()
     },
+    activated () {
+      this.$refs.findShow.style.display = 'block'
+    },
     watch: {
       data () {
         this.$nextTick(() => {
