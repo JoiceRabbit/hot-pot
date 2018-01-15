@@ -81,6 +81,7 @@
           const data = res.data.data
           if (data.login) {
             // data.tel 手机号
+            this.$router.push('/')
           }
         }
       },
