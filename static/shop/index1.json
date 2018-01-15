@@ -49,6 +49,32 @@
                 ]
             },
             "order":[
+              {
+                    "id":2,
+                    "name":"特色功能",
+                    "isDiscount":false,
+                    "desc":"特色功能",
+                    "list":[
+                        {
+                          "id": 1233,
+                          "img":"/static/images/patter.png",
+                          "title":"陪伴聊天",
+                          "desc":"陪伴聊天，来唠会嗑",
+                          "sold_num":20,
+                          "fav":99,
+                          "price":10
+                        },
+                        {
+                          "id": 1232,
+                          "img":"/static/images/go.png",
+                          "title":"随叫随到",
+                          "desc":"随叫随到，来唠会嗑",
+                          "sold_num":20,
+                          "fav":99,
+                          "price":10
+                        }
+                    ]
+                },
                 {
                     "id":3,
                     "name":"优惠",

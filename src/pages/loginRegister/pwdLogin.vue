@@ -46,6 +46,10 @@
         this.errMessageShow = false
         this.errMessage = ''
       },
+      showNotice (str) {
+        this.errMessageShow = true
+        this.errMessage = str
+      },
       handleMessageClick () {
         this.$emit('message')
       },
@@ -80,12 +84,18 @@
         if (res && res.data && res.data.data) {
           const data = res.data.data
           if (data.login) {
-            // data.tel 手机号
+            this.showNotice(data.tel + '登录成功')
             this.$router.push('/')
+          } else {
+            this.showNotice('登陆失败')
           }
+        } else {
+          this.showNotice('数据获取失败')
         }
       },
-      handleLoginErr () {}
+      handleLoginErr () {
+        this.showNotice('系统异常')
+      }
     }
   }
 </script>

@@ -29,10 +29,14 @@
                  :shopOrderInfo="shopOrderInfo"
                  :shopIntroInfo="shopIntroInfo"></component>
     </div>
+    <tool-tip :errMessage="errMessage"
+              v-show="errMessageShow"
+              @miss="handleErrMiss"></tool-tip>
   </div>
 </template>
 
 <script>
+  import ToolTip from 'components/ui/toolTip.vue'
   import axios from 'axios'
   import ShopHeader from './header.vue'
   import ShopOrder from './order.vue'
@@ -51,7 +55,9 @@
         orderActive: true,
         evaluteActive: false,
         introActive: false,
-        componentActive: 'ShopOrder'
+        componentActive: 'ShopOrder',
+        errMessage: '',
+        errMessageShow: false,
       }
     },
     components: {
@@ -60,14 +66,15 @@
       ShopEvalute,
       ShopIntro
     },
-    watch: {
-      shopId () {
-        if (this.shopId) {
-          //
-        }
-      }
-    },
     methods: {
+      handleErrMiss () {
+        this.errMessageShow = false
+        this.errMessage = ''
+      },
+      showNotice (str) {
+        this.errMessageShow = true
+        this.errMessage = str
+      },
       getShopInfo () {
         axios.get('/api/shop/index1.json', {
           shopId: this.shopId
@@ -84,11 +91,11 @@
             this.shopIntroInfo = this.shopInfo.intro
           }
         } else {
-          //
+          this.showNotice('数据获取异常')
         }
       },
       handleGetShopInfoErr () {
-        //
+        this.showNotice('系统异常')
       },
       handleOrderTabClick () {
         this.componentActive = 'ShopOrder'
