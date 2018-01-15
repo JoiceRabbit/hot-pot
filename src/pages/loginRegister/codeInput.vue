@@ -32,7 +32,7 @@
         this.count = this.countDown
         if (this.count) {
           this.text = '60s'
-          var timer = setInterval(() => {
+          const timer = setInterval(() => {
             if (parseInt(this.text, 10) === 0) {
               clearInterval(timer)
               this.count = false
@@ -104,5 +104,5 @@
     background: #4cd96f
   .count-down
     background: #666
-    color: #333
+    color: #fff
 </style>
