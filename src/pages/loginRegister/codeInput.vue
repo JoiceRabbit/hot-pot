@@ -32,10 +32,11 @@
         this.count = this.countDown
         if (this.count) {
           this.text = '60s'
-          setInterval(() => {
+          const timer = setInterval(() => {
             if (parseInt(this.text, 10) === 0) {
-              clearInterval()
+              clearInterval(timer)
               this.count = false
+              this.$emit('stop')
               this.text = '发送验证码'
             } else {
               this.text = parseInt(this.text, 10) - 1 + 's'
@@ -103,5 +104,5 @@
     background: #4cd96f
   .count-down
     background: #666
-    color: #333
+    color: #fff
 </style>

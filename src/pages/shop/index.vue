@@ -82,7 +82,6 @@
             this.shopInfo = data.shopInfo
             this.shopOrderInfo = this.shopInfo.order
             this.shopIntroInfo = this.shopInfo.intro
-            console.log(this.shopIntroInfo)
           }
         } else {
           console.log('res Kong ')

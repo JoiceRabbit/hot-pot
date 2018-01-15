@@ -9,6 +9,7 @@
                   :countDown="countDown"
                   @send="handleSendCode"
                   @login="handleLogin"
+                  @stop="handleStop"
                   ref="code"></code-input>
     </div>
     <p class="notice">温馨提示：未注册同城火锅帐号的手机号，登录时将自动注册，且代表您已同意<span>《用户服务协议》</span></p>
@@ -136,6 +137,9 @@
       },
       handleLoginClickErr () {
         this.showNotice('系统异常')
+      },
+      handleStop () {
+        this.countDown = false
       }
     }
   }
