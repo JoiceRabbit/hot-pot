@@ -40,10 +40,10 @@
       display: flex
       padding: .2rem .2rem .2rem 0
       .img-con
-        overflow: hidden
+        // overflow: hidden
         width: 1.52rem
-        height: 0
-        padding-bottom: 30%
+        height: 1.52rem
+        // padding-bottom: 30%
         .item-img
           width: 100%
       .item-detail

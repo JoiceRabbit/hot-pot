@@ -1,6 +1,6 @@
 <template>
   <div class="mine">
-    <div class="img-con">
+    <div class="img-con" @click="handleMineClick">
       <img src="../../../static/images/mine.jpg" class="img">
     </div>
     <footer-tab></footer-tab>
@@ -13,6 +13,11 @@
     name: 'mine',
     components: {
       FooterTab
+    },
+    methods: {
+      handleMineClick () {
+        this.$router.push('/login')
+      }
     }
   }
 </script>

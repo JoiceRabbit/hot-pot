@@ -63,7 +63,7 @@
     watch: {
       shopId () {
         if (this.shopId) {
-          console.log(1)
+          //
         }
       }
     },
@@ -82,14 +82,13 @@
             this.shopInfo = data.shopInfo
             this.shopOrderInfo = this.shopInfo.order
             this.shopIntroInfo = this.shopInfo.intro
-            console.log(this.shopIntroInfo)
           }
         } else {
-          console.log('res Kong ')
+          //
         }
       },
       handleGetShopInfoErr () {
-        console.log('error')
+        //
       },
       handleOrderTabClick () {
         this.componentActive = 'ShopOrder'
