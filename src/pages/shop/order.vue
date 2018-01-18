@@ -23,4 +23,6 @@
 <style scoped lang="stylus">
   .order
     display: flex
+    padding-bottom: 1.5rem
+    padding-top: .72rem
 </style>

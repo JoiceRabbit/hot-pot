@@ -7,6 +7,7 @@ import Order from 'pages/order/index'
 import Mine from 'pages/mine/index'
 import Login from 'pages/loginRegister/index'
 import Shop from 'pages/shop/index'
+import Change from 'pages/loginRegister/changePwd'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
       name: 'shop',
       component: Shop,
       props: true
+    },
+    {
+      path: '/change',
+      name: 'change',
+      component: Change
     }
   ]
 })

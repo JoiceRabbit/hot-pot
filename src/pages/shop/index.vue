@@ -29,9 +29,7 @@
                  :shopOrderInfo="shopOrderInfo"
                  :shopIntroInfo="shopIntroInfo"></component>
     </div>
-    <tool-tip :errMessage="errMessage"
-              v-show="errMessageShow"
-              @miss="handleErrMiss"></tool-tip>
+    <shop-cart></shop-cart>
   </div>
 </template>
 
@@ -42,6 +40,7 @@
   import ShopOrder from './order.vue'
   import ShopEvalute from './evalute.vue'
   import ShopIntro from './intro.vue'
+  import ShopCart from './cart.vue'
   export default {
     name: 'shop',
     props: {
@@ -64,7 +63,8 @@
       ShopHeader,
       ShopOrder,
       ShopEvalute,
-      ShopIntro
+      ShopIntro,
+      ShopCart
     },
     methods: {
       handleErrMiss () {
@@ -76,7 +76,7 @@
         this.errMessage = str
       },
       getShopInfo () {
-        axios.get('/api/shop/index1.json', {
+        axios.get('/api/shop/index', {
           shopId: this.shopId
         })
         .then(this.handleGetShopInfoSucc.bind(this))
@@ -156,10 +156,15 @@
       .logo-img
         width: 100%
   .tab
+    position: sticky
+    left: 0
+    top: 0
+    z-index: 2
     display: flex
     line-height: .72rem
     font-size: .26rem
     color: #333
+    background: #fff
     .tab-item-con
       width: 33%
       padding: 0 .9rem

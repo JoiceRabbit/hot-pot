@@ -281,6 +281,58 @@
                           "price":10
                         }
                     ]
+                },
+                {
+                    "id":12,
+                    "name":"蔬菜类",
+                    "isDiscount":false,
+                    "desc":"素食的最爱",
+                    "list":[
+                        {
+                          "id": 1236,
+                          "img":"https://fuss10.elemecdn.com/7/6d/cc3bcab6f4eb0e65f41bf6b785a48jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/",
+                          "title":"平菇",
+                          "desc":"素食者的最爱",
+                          "sold_num":35,
+                          "fav":4.1,
+                          "price":16
+                        },
+                        {
+                          "id": 1237,
+                          "img":"https://fuss10.elemecdn.com/f/cd/6d7e1f03a816909758b6ea0a8d901jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/",
+                          "title":"白菜",
+                          "desc":"所有菜品为半成品，需要您涮后享用美味哟！",
+                          "sold_num":40,
+                          "fav":4,
+                          "price":10
+                        }
+                    ]
+                },
+                {
+                    "id":13,
+                    "name":"蔬菜类",
+                    "isDiscount":false,
+                    "desc":"素食的最爱",
+                    "list":[
+                        {
+                          "id": 1236,
+                          "img":"https://fuss10.elemecdn.com/7/6d/cc3bcab6f4eb0e65f41bf6b785a48jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/",
+                          "title":"平菇",
+                          "desc":"素食者的最爱",
+                          "sold_num":35,
+                          "fav":4.1,
+                          "price":16
+                        },
+                        {
+                          "id": 1237,
+                          "img":"https://fuss10.elemecdn.com/f/cd/6d7e1f03a816909758b6ea0a8d901jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/",
+                          "title":"白菜",
+                          "desc":"所有菜品为半成品，需要您涮后享用美味哟！",
+                          "sold_num":40,
+                          "fav":4,
+                          "price":10
+                        }
+                    ]
                 }
             ]
         }
