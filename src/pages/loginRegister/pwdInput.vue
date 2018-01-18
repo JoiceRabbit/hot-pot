@@ -2,7 +2,7 @@
   <div>  
     <input class="pwd-input" 
            v-model="password" 
-           type="text" 
+           type="password" 
            placeholder="密码:只能输入6-20个字母、数字、下划线 " 
            @input="handlePwd">
   </div>

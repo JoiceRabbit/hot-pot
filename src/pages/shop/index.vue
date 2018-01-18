@@ -29,11 +29,7 @@
                  :shopOrderInfo="shopOrderInfo"
                  :shopIntroInfo="shopIntroInfo"></component>
     </div>
-    <div class="cart">
-      <div class="cart-car"></div>
-      <div class="current-con"></div>
-      <div class="count">结算</div>
-    </div>
+    <shop-cart></shop-cart>
   </div>
 </template>
 
@@ -43,6 +39,7 @@
   import ShopOrder from './order.vue'
   import ShopEvalute from './evalute.vue'
   import ShopIntro from './intro.vue'
+  import ShopCart from './cart.vue'
   export default {
     name: 'shop',
     props: {
@@ -63,7 +60,8 @@
       ShopHeader,
       ShopOrder,
       ShopEvalute,
-      ShopIntro
+      ShopIntro,
+      ShopCart
     },
     watch: {
       shopId () {
@@ -74,7 +72,7 @@
     },
     methods: {
       getShopInfo () {
-        axios.get('/api/shop/index1.json', {
+        axios.get('/api/shop/index', {
           shopId: this.shopId
         })
         .then(this.handleGetShopInfoSucc.bind(this))
@@ -173,30 +171,4 @@
         text-align: center
       .tab-active
         background: url(../../../static/images/shop-tab-bg.png) bottom repeat-X
-  .cart
-    position: fixed
-    width: 100%
-    left: 0
-    bottom: 0
-    height: 1.34rem
-    background: rgba(0, 0, 0, .5)
-    .cart-car
-      position: absolute
-      left: 20px
-      top: -15px
-      width: 1rem
-      height: 1rem
-      border-radius: .5rem
-      background: #666
-    .count
-      position: absolute
-      right: 0
-      top: 0
-      width: 1.95rem
-      height: 1.34rem
-      line-height: 1.34rem
-      text-align: center
-      font-size: .5rem
-      background: #00cb00
-      color: #fff
 </style>
