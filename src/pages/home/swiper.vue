@@ -24,7 +24,6 @@
           observer: true,
           observerParents: true,
           initialSlide: 1
-          // effect: 'cube'
         }
       }
     }

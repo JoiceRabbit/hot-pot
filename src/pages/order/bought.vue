@@ -31,7 +31,8 @@
     mounted () {
       this.scroller = new BScroll(this.$refs.scroll, {
         scrollX: true,
-        scrollY: false
+        scrollY: false,
+        click: true
       })
     }
   }

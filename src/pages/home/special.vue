@@ -2,7 +2,7 @@
   <div class="special">
     <div class="item" v-for="item in special" :key="item.id">
       <div class="img-con">
-        <img :src="item.imgUrl" class="img">
+        <img :src="item.imgUrl || defaultImg" class="img">
       </div>
       <p class="title">{{item.title}}</p>
     </div>
@@ -14,6 +14,11 @@
     name: 'special',
     props: {
       special: Array
+    },
+    data () {
+      return {
+        defaultImg: '/static/banner/default.jpg'
+      }
     }
   }
 </script>

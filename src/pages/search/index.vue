@@ -2,7 +2,7 @@
   <div class="search" ref="search">
     <header class="head">
       <span class="back iconfont" @click="handleBack">&#xe624;</span>
-      <div class="input-con">
+      <div class="input-con border">
         <span class="input-icon iconfont">&#xe61d;</span>输入商家、商品名称
       </div>
       <span class="searchBtn">搜索</span> 
@@ -66,6 +66,9 @@
         flex: 1
         font-size: .32rem
         color: #bbb
+        &::after,
+        &::before
+          border-color: #eee
         .input-icon
           font-size: .38rem
           margin-right: .1rem

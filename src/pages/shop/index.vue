@@ -34,7 +34,6 @@
 </template>
 
 <script>
-  import ToolTip from 'components/ui/toolTip.vue'
   import axios from 'axios'
   import ShopHeader from './header.vue'
   import ShopOrder from './order.vue'
@@ -56,7 +55,7 @@
         introActive: false,
         componentActive: 'ShopOrder',
         errMessage: '',
-        errMessageShow: false,
+        errMessageShow: false
       }
     },
     components: {
@@ -146,10 +145,8 @@
       font-weight: bolder
     .logo-con
       position: absolute
-      // overflow: hidden
       width: 1.3rem
       height: 1.3rem
-      // padding-bottom: 100%
       top: .5rem
       left: 50%
       transform: translateX(-50%)

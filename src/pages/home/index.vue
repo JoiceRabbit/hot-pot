@@ -1,8 +1,7 @@
 <template>
-  <div class="index">
+  <div class="index" ref="indexShow">
     <header class="header">
-      <span class="position-icon iconfont">&#xe603;</span>
-      <span class="position">{{position || "定位中..."}}</span>
+      <div class="position iconfont position-icon">&#xe603; {{position || "定位中..."}}</div>
     </header>
     <div class="search-con">
       <router-link class="search iconfont" to="/search/" tag="div">
@@ -43,6 +42,9 @@
     created () {
       this.getIndexData()
     },
+    activated () {
+      this.$refs.indexShow.style.display = 'block'
+    },
     methods: {
       getIndexData () {
         axios.get('/api/index.json')
@@ -78,7 +80,7 @@
     font-size: .28rem
     color: #fff
     .position
-      margin: 0 .1rem
+      padding: .01rem 0
       max-width: 75%
       ellipsis()
   .search-con

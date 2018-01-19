@@ -30,6 +30,9 @@
     created () {
       this.getData()
     },
+    activated () {
+      this.$refs.orderShow.style.display = 'block'
+    },
     watch: {
       data () {
         this.$nextTick(() => {
