@@ -31,7 +31,7 @@
       this.getData()
     },
     activated () {
-      this.$refs.findShow.style.display = 'block'
+      this.$refs.orderShow.style.display = 'block'
     },
     watch: {
       data () {
