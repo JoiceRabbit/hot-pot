@@ -22,6 +22,7 @@
     },
     methods: {
       handleCartChange (e) {
+        this.count = 0
         this.list = e
         if (this.list.length) {
           this.active = true
@@ -29,9 +30,11 @@
           this.active = false
         }
         this.countPrice = 0
-        this.count = this.list.length
+        this.list.forEach((value) => {
+          this.count += value.count
+        })
         for (let i = 0; i < this.list.length; i++) {
-          this.countPrice += this.list[i].price
+          this.countPrice += this.list[i].price * this.list[i].count
         }
       }
     },

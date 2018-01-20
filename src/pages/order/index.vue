@@ -43,7 +43,7 @@
     },
     methods: {
       getData () {
-        axios.get('/api/order.json')
+        axios.get('/api/order/?format=json')
              .then(this.handleGetDataSucc.bind(this))
              .catch(this.handleGetDataErr.bind(this))
       },
