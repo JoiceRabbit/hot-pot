@@ -26,7 +26,9 @@
     },
     methods: {
       createScroll () {
-        this.scroller = new BScroll(this.$refs.wrapper)
+        this.scroller = new BScroll(this.$refs.wrapper, {
+          click: true
+        })
       },
       handleCateClick (e) {
         bus.$emit('cate', {

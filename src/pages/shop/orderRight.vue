@@ -56,7 +56,9 @@
     },
     methods: {
       createScroll () {
-        this.scroller = new BScroll(this.$refs.wrapper)
+        this.scroller = new BScroll(this.$refs.wrapper, {
+          click: true
+        })
       },
       handleChangeFood (e) {
         if (this.cartList.length) {
