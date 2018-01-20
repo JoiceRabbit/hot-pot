@@ -39,19 +39,13 @@
         this.$nextTick(() => {
           this.scroller.refresh()
         })
-      },
-      cartList: {
-        handler () {
-          bus.$emit('cart', this.cartList)
-        },
-        deep: true
       }
     },
     data () {
       return {
         cartList: [],
         addNew: true,
-        cateHeight: []
+        cateHeight: [{name: 1}, {name: 2}]
       }
     },
     methods: {
@@ -61,10 +55,11 @@
         })
       },
       handleChangeFood (e) {
+        let obj = JSON.parse(JSON.stringify(e))
         if (this.cartList.length) {
           this.cartList.map((value, index) => {
-            if (value.title === e.title && value.id === e.id) {
-              value.count = e.count
+            if (value.title === obj.title && value.id === obj.id) {
+              value.count = obj.count
               if (value.count === 0) {
                 this.cartList.splice(index, 1)
               }
@@ -77,8 +72,9 @@
           this.addNew = true
         }
         if (this.addNew) {
-          this.cartList.push(e)
+          this.cartList.push(obj)
         }
+        bus.$emit('cart', this.cartList)
       },
       handleScrollEl (e) {
         this.scroller.scrollToElement(this.$refs[e.el][0])

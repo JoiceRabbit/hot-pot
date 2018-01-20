@@ -75,7 +75,7 @@
         this.errMessage = str
       },
       getShopInfo () {
-        axios.get('/api/shop/index1.json', {
+        axios.get('/api/shop/index/?format=json', {
           shopId: this.shopId
         })
         .then(this.handleGetShopInfoSucc.bind(this))

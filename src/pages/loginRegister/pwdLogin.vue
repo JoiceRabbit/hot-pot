@@ -72,7 +72,7 @@
       },
       handleLoginClick () {
         if (this.loginShow) {
-          axios.post('/api/user/loginPwd.json', {
+          axios.post('/api/user/loginPwd/?format=json', {
             tel: this.phoneNum,
             pwd: this.password
           })

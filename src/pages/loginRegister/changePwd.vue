@@ -85,7 +85,7 @@
       handleSendCode () {
         if (!this.countDown) {
           if (this.$refs.phone.checkPhoneNum()) {
-            axios.post('/api/user/getVerCode.json', {
+            axios.post('/api/user/getVerCode/?format=json', {
               tel: this.phoneNum
             })
             .then(this.handleSendCodeSucc.bind(this))
@@ -127,7 +127,7 @@
       },
       handleLoginClick () {
         if (this.loginShow) {
-          axios.post('/api/user/loginVerCode.json', {
+          axios.post('/api/user/loginVerCode/?format=json', {
             tel: this.phoneNum,
             code: this.code,
             pwd: this.password

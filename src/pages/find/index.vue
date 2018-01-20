@@ -56,7 +56,7 @@
       FooterTab
     },
     created () {
-      axios.get('/api/find.json')
+      axios.get('/api/find/?format=json')
            .then(this.handleGetListSucc.bind(this))
            .catch(this.handleGetListErr.bind(this))
     },

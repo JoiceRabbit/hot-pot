@@ -47,7 +47,7 @@
     },
     methods: {
       getIndexData () {
-        axios.get('/api/index.json')
+        axios.get('/api/index/?format=json')
            .then(this.handleGetDataSucc.bind(this))
            .catch(this.handleGetDataErr.bind(this))
       },
