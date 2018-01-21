@@ -102,7 +102,6 @@
         this.showLoginBtn()
       },
       handleLoginClick () {
-        console.log(this.code)
         if (this.loginShow) {
           axios.post('/api/user/loginVerCode/?format=json', {
             tel: this.phoneNum,
@@ -122,10 +121,10 @@
         }
       },
       handleLoginClickSucc (res) {
-        if (res && res.data && res.data.data) {
-          const data = res.data.data
-          if (data.login) {
-            this.showNotice(data.tel + '登录成功')
+        if (res && res.data) {
+          const data = res.data
+          if (data.ret) {
+            this.showNotice('登录成功')
             this.$router.go(-1)
           }
         } else {

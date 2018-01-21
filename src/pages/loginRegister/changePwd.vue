@@ -104,17 +104,12 @@
       },
       handleSendCodeSucc (res) {
         if (res.data.ret) {
-          if (res.data.data.send) {
-            this.sendCode = true
-            this.showNotice('发送成功')
-            this.countDown = true
-          } else {
-            this.sendCode = false
-            this.showNotice('发送失败，请检查您的手机号')
-          }
+          this.sendCode = true
+          this.showNotice('发送成功')
+          this.countDown = true
         } else {
           this.sendCode = false
-          this.showNotice('服务器异常')
+          this.showNotice('发送失败，请检查您的手机号')
         }
       },
       handleSendCodeErr () {
@@ -127,10 +122,10 @@
       },
       handleLoginClick () {
         if (this.loginShow) {
-          axios.post('/api/user/loginVerCode/?format=json', {
+          axios.post('/api/user/setPassword/?format=json', {
             tel: this.phoneNum,
-            code: this.code,
-            pwd: this.password
+            verCode: this.code,
+            password: this.password
           })
           .then(this.handleLoginClickSucc.bind(this))
           .catch(this.handleLoginClickErr.bind(this))
@@ -154,10 +149,10 @@
         }
       },
       handleLoginClickSucc (res) {
-        if (res && res.data && res.data.data) {
-          const data = res.data.data
-          if (data.login) {
-            this.showNotice(data.tel + '修改成功')
+        if (res && res.data) {
+          const data = res.data
+          if (data.ret) {
+            this.showNotice('修改成功')
             this.$router.go(-1)
           }
         } else {

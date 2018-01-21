@@ -123,10 +123,10 @@
       handleScroll () {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
         if (scrollTop > this.tabTop) {
-          this.$refs.tab.style.position = 'fixed'
-          this.$refs.tab.style.top = 0
+          this.$refs.tab && (this.$refs.tab.style.position = 'fixed')
+          this.$refs.tab && (this.$refs.tab.style.top = 0)
         } else {
-          this.$refs.tab.style.position = ''
+          this.$refs.tab && (this.$refs.tab.style.position = '')
         }
       }
     },
