@@ -65,7 +65,7 @@
     position: absolute
     top: 0
     right: 0
-    bottom: 0
+    bottom: .9rem
     left: 0
     display: flex
     flex-direction: column

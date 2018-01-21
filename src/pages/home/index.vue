@@ -10,7 +10,7 @@
     </div>
     <swiper :sliders="sliders"></swiper>
     <special :special="special"></special>
-    <div class="shopList-title">— 推荐商家 —</div>
+    <div class="shopList-title" v-show="show">— 推荐商家 —</div>
     <shop-list :shopList="shopList"></shop-list>
     <footer-tab></footer-tab>
   </div>
@@ -30,7 +30,9 @@
         position: '',
         sliders: [],
         shopList: [],
-        special: []
+        special: [],
+        seacherTop: 0,
+        show: false
       }
     },
     components: {
@@ -43,10 +45,14 @@
       this.getIndexData()
     },
     mounted () {
+      this.seacherTop = this.$refs.seacher.offsetTop
       window.addEventListener('scroll', this.handleScroll)
     },
     destoryed () {
       window.removeEventListener('scroll', this.handleScroll)
+    },
+    updated () {
+      this.show = true
     },
     methods: {
       getIndexData () {
@@ -70,8 +76,7 @@
       },
       handleScroll () {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-        const offsetTop = this.$refs.seacher.offsetTop
-        if (scrollTop > offsetTop) {
+        if (scrollTop > this.seacherTop) {
           this.$refs.seacher.style.position = 'fixed'
           this.$refs.seacher.style.top = 0
         } else {

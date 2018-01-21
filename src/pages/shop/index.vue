@@ -55,7 +55,8 @@
         introActive: false,
         componentActive: 'ShopOrder',
         errMessage: '',
-        errMessageShow: false
+        errMessageShow: false,
+        tabTop: 0
       }
     },
     components: {
@@ -118,10 +119,27 @@
       },
       handleGoBack () {
         this.$router.go(-1)
+      },
+      handleScroll () {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        if (scrollTop > this.tabTop) {
+          this.$refs.tab.style.position = 'fixed'
+          this.$refs.tab.style.top = 0
+        } else {
+          this.$refs.tab.style.position = ''
+        }
       }
     },
     created () {
       this.getShopInfo()
+    },
+    mounted () {
+      this.tabTop = this.$refs.tab.offsetTop
+      window.addEventListener('scroll', this.handleScroll)
+    },
+    destoryed () {
+      console.log(123)
+      window.removeEventListener('scroll', this.handleScroll)
     }
   }
 </script>

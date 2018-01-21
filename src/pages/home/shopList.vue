@@ -54,7 +54,7 @@
   @import '../../assets/styles/common/mixin.styl'
   .shopList-con
     background: #fff
-    padding-bottom: .6rem
+    padding-bottom: .9rem
     .shop-con
       padding: .6rem .4rem
       &::after

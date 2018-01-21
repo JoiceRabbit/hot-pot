@@ -74,7 +74,7 @@
         if (this.loginShow) {
           axios.post('/api/user/loginPwd/?format=json', {
             tel: this.phoneNum,
-            pwd: this.password
+            password: this.password
           })
           .then(this.handleLoginSucc.bind(this))
           .catch(this.handleLoginErr.bind(this))

@@ -85,17 +85,12 @@
       },
       handleSendCodeSucc (res) {
         if (res.data.ret) {
-          if (res.data.data.send) {
-            this.sendCode = true
-            this.showNotice('发送成功')
-            this.countDown = true
-          } else {
-            this.sendCode = false
-            this.showNotice('发送失败，请检查您的手机号')
-          }
+          this.sendCode = true
+          this.showNotice('发送成功')
+          this.countDown = true
         } else {
           this.sendCode = false
-          this.showNotice('服务器异常')
+          this.showNotice('发送失败，请检查您的手机号')
         }
       },
       handleSendCodeErr () {
@@ -107,10 +102,11 @@
         this.showLoginBtn()
       },
       handleLoginClick () {
+        console.log(this.code)
         if (this.loginShow) {
           axios.post('/api/user/loginVerCode/?format=json', {
             tel: this.phoneNum,
-            code: this.code
+            verCode: this.code
           })
           .then(this.handleLoginClickSucc.bind(this))
           .catch(this.handleLoginClickErr.bind(this))
