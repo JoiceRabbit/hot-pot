@@ -39,10 +39,10 @@
         <p class="addr-icon info-icon iconfont">&#xe603;</p>
         <p class="info-title">收货地址</p>
       </div>
-      <div class="coll-con item-con border-bottom">
+      <router-link tag="div" to="/change" class="coll-con item-con border-bottom">
         <p class="coll-icon info-icon iconfont">&#xe678;</p>
-        <p class="info-title">我的收藏</p>
-      </div>
+        <p class="info-title">密码设置</p>
+      </router-link>
     </div>
     <div class="gold-mall-con block-con border-top">
       <div class="gold-mall item-con border-bottom">

@@ -1,9 +1,9 @@
 <template>
-  <div class="index" ref="indexShow">
+  <div class="index">
     <header class="header">
       <div class="position iconfont position-icon">&#xe603; {{position || "定位中..."}}</div>
     </header>
-    <div class="search-con">
+    <div class="search-con" ref="seacher">
       <router-link class="search iconfont" to="/search/" tag="div">
         &#xe61d; 搜索商家、商品名称
       </router-link>
@@ -42,8 +42,8 @@
     created () {
       this.getIndexData()
     },
-    activated () {
-      this.$refs.indexShow.style.display = 'block'
+    mounted () {
+      window.addEventListener('scroll', this.handleScroll)
     },
     methods: {
       getIndexData () {
@@ -64,6 +64,17 @@
       },
       handleGetDataErr () {
         console.log('error')
+      },
+      handleScroll () {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        const offsetTop = this.$refs.seacher.offsetTop
+        if (scrollTop > offsetTop) {
+          this.$refs.seacher.style.position = 'fixed'
+          this.$refs.seacher.style.top = 0
+        } else {
+          this.$refs.seacher.style.position = 'none'
+          // this.$refs.seacher.style.top = offsetTop
+        }
       }
     }
   }
@@ -84,11 +95,11 @@
       max-width: 75%
       ellipsis()
   .search-con
-    position: sticky
-    top: 0
     padding: .14rem .28rem
     background: $bgColor
     z-index: 100
+    width: 100%
+    box-sizing: border-box
     .search
       line-height: .72rem
       background: #fff

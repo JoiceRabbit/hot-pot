@@ -1,5 +1,5 @@
 <template>
-  <div class="search" ref="search">
+  <div class="search">
     <header class="head">
       <span class="back iconfont" @click="handleBack">&#xe624;</span>
       <div class="input-con border">
@@ -27,10 +27,6 @@
       handleBack () {
         this.$router.go(-1)
       }
-    },
-    beforeRouteLeave (to, from, next) {
-      this.$refs.search.style.display = 'none'
-      next()
     },
     created () {
       setTimeout(() => {

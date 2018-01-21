@@ -1,5 +1,5 @@
 <template>
-  <div class="find" ref="findShow">
+  <div class="find">
     <header class="find-con">
       <p class="back iconfont">&#xe624;</p>
       <div class="find">发现</div>
@@ -48,8 +48,7 @@
       return {
         lists: [],
         imgs: [],
-        errMsg: '',
-        findShow: true
+        errMsg: ''
       }
     },
     components: {
@@ -59,9 +58,6 @@
       axios.get('/api/find/?format=json')
            .then(this.handleGetListSucc.bind(this))
            .catch(this.handleGetListErr.bind(this))
-    },
-    activated () {
-      this.$refs.findShow.style.display = 'block'
     },
     methods: {
       handleGetListSucc (res) {
@@ -82,10 +78,6 @@
       handleGetListErr () {
         this.errMsg = '服务器开小差了T_T,请尝试刷新页面'
       }
-    },
-    beforeRouteLeave (to, from, next) {
-      this.$refs.findShow.style.display = 'none'
-      next()
     }
   }
 </script>
@@ -97,6 +89,7 @@
     display: flex
     flex-direction: column
     justify-content: space-between
+    padding-bottom: .6rem
     .find-con
       height: .88rem
       background: $bgColor

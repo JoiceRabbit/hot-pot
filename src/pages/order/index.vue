@@ -1,5 +1,5 @@
 <template>
-  <div class="order" ref="orderShow">
+  <div class="order">
     <header class="header">
       <div class="head-title">订单</div>
       <span class="lunch">午餐</span>
@@ -30,9 +30,6 @@
     created () {
       this.getData()
     },
-    activated () {
-      this.$refs.orderShow.style.display = 'block'
-    },
     watch: {
       data () {
         this.$nextTick(() => {
@@ -57,10 +54,6 @@
       handleGetDataErr () {
         console.log('error')
       }
-    },
-    beforeRouteLeave (to, from, next) {
-      this.$refs.orderShow.style.display = 'none'
-      next()
     }
   }
 </script>

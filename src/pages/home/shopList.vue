@@ -2,9 +2,9 @@
   <section class="shopList-con">
     <div class="shops-con">
       <div class="shop-con border-bottom" 
-             v-for="(shop, index) in shopList" 
-             :key="shop.id" >
-        <router-link :to="'/shop/' + shop.id " tag="div">
+           v-for="(shop, index) in shopList" 
+           :key="shop.id" >
+        <router-link :to="'/shop/' + shop.shopId " tag="div">
           <div class="shop">
             <div class="logo">
               <img v-lazy="shop.logo" class="logoImg">
@@ -54,6 +54,7 @@
   @import '../../assets/styles/common/mixin.styl'
   .shopList-con
     background: #fff
+    padding-bottom: .6rem
     .shop-con
       padding: .6rem .4rem
       &::after
