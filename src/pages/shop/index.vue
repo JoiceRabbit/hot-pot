@@ -55,7 +55,8 @@
         introActive: false,
         componentActive: 'ShopOrder',
         errMessage: '',
-        errMessageShow: false
+        errMessageShow: false,
+        tabTop: 0
       }
     },
     components: {
@@ -118,14 +119,26 @@
       },
       handleGoBack () {
         this.$router.go(-1)
+      },
+      handleScroll () {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        if (scrollTop > this.tabTop) {
+          this.$refs.tab.style.position = 'fixed'
+          this.$refs.tab.style.top = 0
+        } else {
+          this.$refs.tab.style.position = ''
+        }
       }
     },
     created () {
       this.getShopInfo()
     },
-    beforeRouteLeave (to, from, next) {
-      this.$refs.shop.style.display = 'none'
-      next()
+    mounted () {
+      this.tabTop = this.$refs.tab.offsetTop
+      window.addEventListener('scroll', this.handleScroll)
+    },
+    destoryed () {
+      window.removeEventListener('scroll', this.handleScroll)
     }
   }
 </script>
@@ -155,9 +168,6 @@
       .logo-img
         width: 100%
   .tab
-    position: sticky
-    left: 0
-    top: 0
     z-index: 2
     display: flex
     line-height: .72rem

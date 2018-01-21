@@ -30,7 +30,8 @@
         position: '',
         sliders: [],
         shopList: [],
-        special: []
+        special: [],
+        seacherTop: 0
       }
     },
     components: {
@@ -43,6 +44,7 @@
       this.getIndexData()
     },
     mounted () {
+      this.seacherTop = this.$refs.seacher.offsetTop
       window.addEventListener('scroll', this.handleScroll)
     },
     destoryed () {
@@ -70,8 +72,7 @@
       },
       handleScroll () {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-        const offsetTop = this.$refs.seacher.offsetTop
-        if (scrollTop > offsetTop) {
+        if (scrollTop > this.seacherTop) {
           this.$refs.seacher.style.position = 'fixed'
           this.$refs.seacher.style.top = 0
         } else {

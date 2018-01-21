@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header-con">
-      <div class="name">{{shopInfo.name}} <i class="right-arrow"></i></div>
+      <div class="name">{{shopInfo.name}}</div>
       <div class="intro">
         好评率{{shopInfo.favComments}}% 月售{{shopInfo.orders}}单 商家配送 约{{shopInfo.sendTime}}分钟 距离{{shopInfo.distance}}m
       </div>
