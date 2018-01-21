@@ -130,7 +130,7 @@
           const data = res.data.data
           if (data.login) {
             this.showNotice(data.tel + '登录成功')
-            this.$router.push('/')
+            this.$router.go(-1)
           }
         } else {
           this.showNotice('系统异常')

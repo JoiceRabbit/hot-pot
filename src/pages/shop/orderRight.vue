@@ -77,7 +77,9 @@
         bus.$emit('cart', this.cartList)
       },
       handleScrollEl (e) {
-        this.scroller.scrollToElement(this.$refs[e.el][0])
+        if (this.$refs[e.el]) {
+          this.scroller.scrollToElement(this.$refs[e.el][0])
+        }
       }
     },
     mounted () {
@@ -104,7 +106,7 @@
         padding: .2rem .2rem .2rem 0
         position: relative
         .img-con
-          // overflow: hidden
+          overflow: hidden
           width: 1.52rem
           height: 1.52rem
           // padding-bottom: 30%
