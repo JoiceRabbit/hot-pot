@@ -11,7 +11,7 @@
    <div class="info-con">
      <div class="info-title">商家实景</div>
      <div class="intro-img-con">
-       <img class="intro-img" v-for="(item, index) in shopIntroInfo.pics" :key="index" :src="item" alt="">
+       <img class="intro-img" v-for="item in shopIntroInfo.pics" :key="item.id" :src="item.imgUrl" alt="">
      </div>
    </div>
    <div class="info-con">

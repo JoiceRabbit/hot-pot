@@ -76,7 +76,9 @@
       },
       getShopInfo () {
         axios.get('/api/shop/index/?format=json', {
-          shopId: this.shopId
+          params: {
+            shopId: this.shopId
+          }
         })
         .then(this.handleGetShopInfoSucc.bind(this))
         .catch(this.handleGetShopInfoErr.bind(this))

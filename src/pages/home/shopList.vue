@@ -4,7 +4,7 @@
       <div class="shop-con border-bottom" 
              v-for="(shop, index) in shopList" 
              :key="shop.id" >
-        <router-link :to="'/shop/' + shop.id " tag="div">
+        <router-link :to="'/shop/' + shop.shopId " tag="div">
           <div class="shop">
             <div class="logo">
               <img v-lazy="shop.logo" class="logoImg">

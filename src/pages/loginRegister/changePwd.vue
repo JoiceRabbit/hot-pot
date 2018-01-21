@@ -157,8 +157,8 @@
         if (res && res.data && res.data.data) {
           const data = res.data.data
           if (data.login) {
-            this.showNotice(data.tel + '登录成功')
-            this.$router.push('/')
+            this.showNotice(data.tel + '修改成功')
+            this.$router.go(-1)
           }
         } else {
           this.showNotice('系统异常')

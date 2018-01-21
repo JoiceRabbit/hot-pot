@@ -11,12 +11,9 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/api': {
+        '/': {
             target: 'http://www.youngfit.cn',
-            changeOrigin:true,
-            pathRewrite: {
-                '/api': '/api'
-            }
+            changeOrigin:true
         }
     },
 
