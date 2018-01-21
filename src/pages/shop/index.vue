@@ -7,7 +7,7 @@
       </div>
     </div>
     <shop-header :shopInfo="shopInfo"></shop-header>
-    <div class="tab border-bottom">
+    <div class="tab border-bottom" ref="tab">
       <div class="order tab-item-con">
         <div class="tab-item" 
              :class="{'tab-active': orderActive}"

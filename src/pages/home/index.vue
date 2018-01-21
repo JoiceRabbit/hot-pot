@@ -45,6 +45,9 @@
     mounted () {
       window.addEventListener('scroll', this.handleScroll)
     },
+    destoryed () {
+      window.removeEventListener('scroll', this.handleScroll)
+    },
     methods: {
       getIndexData () {
         axios.get('/api/index/?format=json')
@@ -72,8 +75,7 @@
           this.$refs.seacher.style.position = 'fixed'
           this.$refs.seacher.style.top = 0
         } else {
-          this.$refs.seacher.style.position = 'none'
-          // this.$refs.seacher.style.top = offsetTop
+          this.$refs.seacher.style.position = ''
         }
       }
     }
