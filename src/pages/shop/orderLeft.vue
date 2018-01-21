@@ -45,7 +45,7 @@
 <style scoped lang="stylus">
   .order-left
     width: 1.52rem
-    height: 11.5rem
+    // height: 11.5rem
     overflow: hidden
     background: #f8f8f8
     .cate-name

@@ -36,9 +36,16 @@
     },
     watch: {
       shopOrderInfo () {
-        this.$nextTick(() => {
-          this.scroller.refresh()
-        })
+        if (this.shopOrderInfo.length > 4) {
+          this.$refs.wrapper.style.height = '11.5rem'
+          this.scroller = new BScroll(this.$refs.wrapper, {
+            click: true
+          })
+        } else {
+          this.$nextTick(() => {
+            this.scroller.refresh()
+          })
+        }
       }
     },
     data () {
@@ -92,7 +99,7 @@
 <style scoped lang="stylus">
   .wrapper
     flex: 1
-    height: 11.5rem
+    // height: 11.5rem
     overflow: hidden
     .order-right
       width: 100%

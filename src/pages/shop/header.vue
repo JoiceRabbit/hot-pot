@@ -23,6 +23,7 @@
 
 <style scoped lang="stylus">
   .header
+    position: relative
     height: 2.1rem
     padding: .8rem .3rem 0 .3rem
     .name

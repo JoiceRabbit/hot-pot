@@ -122,56 +122,58 @@
     },
     created () {
       this.getShopInfo()
-    },
-    beforeRouteLeave (to, from, next) {
-      this.$refs.shop.style.display = 'none'
-      next()
     }
   }
 </script>
 
 <style scoped lang="stylus">
   @import '../../assets/styles/common/varibles.styl'
-  .shop-top
-    position: relative
-    height: 1.36rem
-    background: $bgColor
-    .back
-      position: absolute
-      width: .5rem
-      height: .5rem
-      top: 10px
-      left: 15px
-      color: #fff
-      font-size: .4rem
-      font-weight: bolder
-    .logo-con
-      position: absolute
-      width: 1.3rem
-      height: 1.3rem
-      top: .5rem
-      left: 50%
-      transform: translateX(-50%)
-      .logo-img
-        width: 100%
-  .tab
-    position: sticky
-    left: 0
+  .shop
+    position:absolute
     top: 0
-    z-index: 2
-    display: flex
-    line-height: .72rem
-    font-size: .26rem
-    color: #333
-    background: #fff
-    .tab-item-con
-      width: 33%
-      padding: 0 .9rem
-      padding-left: .75rem
-      .tab-item
-        width: .63rem
-        height: .72rem
-        text-align: center
-      .tab-active
-        background: url(../../../static/images/shop-tab-bg.png) bottom repeat-X
+    right: 0
+    bottom: 0
+    left: 0
+    .shop-top
+      position: relative
+      height: 1.36rem
+      background: $bgColor
+      .back
+        position: absolute
+        width: .5rem
+        height: .5rem
+        top: 10px
+        left: 15px
+        color: #fff
+        font-size: .4rem
+        font-weight: bolder
+      .logo-con
+        position: absolute
+        width: 1.3rem
+        height: 1.3rem
+        top: .5rem
+        left: 50%
+        transform: translateX(-50%)
+        .logo-img
+          width: 100%
+    .tab
+      position: sticky
+      left: 0
+      top: 0
+      z-index: 2
+      display: flex
+      line-height: .72rem
+      font-size: .26rem
+      color: #333
+      background: #fff
+      .tab-item-con
+        width: 33%
+        padding: 0 .9rem
+        padding-left: .75rem
+        .tab-item
+          width: .63rem
+          height: .72rem
+          text-align: center
+        .tab-active
+          background: url(../../../static/images/shop-tab-bg.png) bottom repeat-X
 </style>
