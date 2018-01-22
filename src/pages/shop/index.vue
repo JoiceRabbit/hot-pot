@@ -7,7 +7,7 @@
       </div>
     </div>
     <shop-header :shopInfo="shopInfo"></shop-header>
-    <div class="tab border-bottom" ref="tab">
+    <div class="tab" ref="tab">
       <div class="order tab-item-con">
         <div class="tab-item" 
              :class="{'tab-active': orderActive}"
@@ -122,7 +122,7 @@
       },
       handleScroll () {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-        if (scrollTop > this.tabTop) {
+        if (scrollTop >= this.tabTop) {
           this.$refs.tab && (this.$refs.tab.style.position = 'fixed')
           this.$refs.tab && (this.$refs.tab.style.top = 0)
         } else {
@@ -137,8 +137,7 @@
       this.tabTop = this.$refs.tab.offsetTop
       window.addEventListener('scroll', this.handleScroll)
     },
-    destoryed () {
-      console.log(123)
+    beforeDestoryed () {
       window.removeEventListener('scroll', this.handleScroll)
     }
   }
@@ -169,15 +168,14 @@
         position: absolute
         width: 1.3rem
         height: 1.3rem
+        z-index: 2
         top: .5rem
         left: 50%
         transform: translateX(-50%)
         .logo-img
           width: 100%
     .tab
-      position: sticky
-      left: 0
-      top: 0
+      width: 100%
       z-index: 2
       display: flex
       line-height: .72rem

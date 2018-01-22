@@ -38,9 +38,11 @@
       shopOrderInfo () {
         if (this.shopOrderInfo.length > 4) {
           this.$refs.wrapper.style.height = '11.5rem'
-          this.scroller = new BScroll(this.$refs.wrapper, {
-            click: true
-          })
+          if (!this.scroller) {
+            // this.scroller = new BScroll(this.$refs.wrapper, {
+            //   click: true
+            // })
+          }
         } else {
           this.$nextTick(() => {
             this.scroller.refresh()
@@ -56,11 +58,6 @@
       }
     },
     methods: {
-      createScroll () {
-        this.scroller = new BScroll(this.$refs.wrapper, {
-          click: true
-        })
-      },
       handleChangeFood (e) {
         let obj = JSON.parse(JSON.stringify(e))
         if (this.cartList.length) {
@@ -87,6 +84,11 @@
         if (this.$refs[e.el]) {
           this.scroller.scrollToElement(this.$refs[e.el][0])
         }
+      },
+      createScroll () {
+        this.scroller = new BScroll(this.$refs.wrapper, {
+          click: true
+        })
       }
     },
     mounted () {

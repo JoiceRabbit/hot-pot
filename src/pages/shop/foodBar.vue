@@ -6,7 +6,7 @@
   <div class="food-num"
        v-show="show">{{foodNum}}</div>
   <div class="iconfont add-food food-btn" 
-       @click="handleAddFood">&#xe6e0;</div>
+       @click.self.stop="handleAddFood">&#xe6e0;</div>
 </div>
 </template>
 
@@ -24,7 +24,7 @@
       }
     },
     methods: {
-      handleAddFood () {
+      handleAddFood (e) {
         this.show = true
         this.foodNum += 1
         this.$emit('food', {
