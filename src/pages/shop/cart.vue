@@ -4,7 +4,9 @@
     &#xe746;<div class="cart-cout" v-show="count">{{count}}</div>
     </div>
     <div class="current-con">￥{{countPrice.toFixed(2)}}</div>
-    <div class="count">结算</div>
+    <div class="count" 
+         :class="{'count-active': active}"
+         @click="handleCountClick">结算</div>
   </div>
 </template>
 
@@ -35,6 +37,12 @@
         })
         for (let i = 0; i < this.list.length; i++) {
           this.countPrice += this.list[i].price * this.list[i].count
+        }
+      },
+
+      handleCountClick () {
+        if (this.active) {
+          this.$router.push('/corder')
         }
       }
     },
@@ -91,6 +99,8 @@
       line-height: 1.34rem
       text-align: center
       font-size: .5rem
-      background: #00cb00
+      background: #666
       color: #fff
+    .count-active
+      background: #00cb00
 </style>

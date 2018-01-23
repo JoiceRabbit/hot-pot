@@ -8,6 +8,7 @@ import Mine from 'pages/mine/index'
 import Login from 'pages/loginRegister/index'
 import Shop from 'pages/shop/index'
 import Change from 'pages/loginRegister/changePwd'
+import CreateOrder from 'pages/createOrder/index'
 
 Vue.use(Router)
 let y = null
@@ -49,6 +50,11 @@ const router = new Router({
       path: '/change',
       name: 'change',
       component: Change
+    },
+    {
+      path: '/corder',
+      name: 'corder',
+      component: CreateOrder
     }
   ]
 })

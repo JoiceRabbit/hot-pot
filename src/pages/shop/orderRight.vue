@@ -5,7 +5,7 @@
         <div class="cate-name border-bottom" :ref="cate.name">{{cate.name}}</div>
         <div class="item-con" v-for="item in cate.list" :key="item.id">
           <div class="img-con">
-            <img :src="item.img" alt="" class="item-img">
+            <img v-lazy="item.img" alt="" class="item-img">
           </div>
           <div class="item-detail">
             <div class="item-name">{{item.title}}</div>
