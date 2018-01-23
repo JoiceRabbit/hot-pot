@@ -4,7 +4,7 @@
                 leave-active-class="animated fadeOut"
                 animation-duration: 300
                 mode='out-in'>
-      <keep-alive exclude="shop">
+      <keep-alive include="index,find">
       	<router-view></router-view>
       </keep-alive>
     </transition>

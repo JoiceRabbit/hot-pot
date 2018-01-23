@@ -6,18 +6,27 @@
     </header>
     <transition enter-active-class="animated bounceInDown"
                 leave-active-class="animated bounceOutDown">
-      <router-link to="/login" tag="div" class="not-login" v-if="notLogin">
+      <router-link to="/login"
+                   tag="div"
+                   class="not-login"
+                   v-if="notLogin">
         未登录
       </router-link>
     </transition>
-    <bought :bought="data.bought" 
-            ref="bought" 
-            v-if="!notLogin"></bought>
-    <orders :orderList="data.orderList"  
-            ref="orders" 
-            class="orders"
-            v-if="!notLogin"></orders>
-    <footer-tab></footer-tab>   
+    <div v-show="!notLogin">
+      <bought :bought="data.bought" 
+              ref="bought">
+      </bought>
+      <orders :orderList="data.orderList"  
+              ref="orders" 
+              class="orders">
+      </orders>
+    </div>
+    <tool-tip :errMessage="errMessage"
+              v-show="errMessageShow"
+              @miss="handleErrMiss">
+    </tool-tip>
+    <footer-tab></footer-tab> 
   </div>
 </template>
 
@@ -26,26 +35,22 @@
   import Bought from './bought.vue'
   import Orders from './orders.vue'
   import FooterTab from 'components/common/tab/'
+  import ToolTip from 'components/ui/toolTip'
   export default {
     name: 'order',
     data () {
       return {
         data: {},
-        notLogin: true
+        errMessage: '',
+        errMessageShow: false,
+        notLogin: false
       }
     },
     components: {
       Bought,
       Orders,
-      FooterTab
-    },
-    created () {
-      this.$root.bus.$on('loginSucc', ($event) => {
-        if ($event.login) {
-          this.getData()
-          this.notLogin = !$event.login
-        }
-      })
+      FooterTab,
+      ToolTip
     },
     watch: {
       data () {
@@ -62,15 +67,33 @@
              .catch(this.handleGetDataErr.bind(this))
       },
       handleGetDataSucc (res) {
-        if (res && res.data && res.data.data) {
-          this.data = res.data.data
+        if (res && res.data) {
+          if (res.data.data) {
+            this.data = res.data.data
+            if (!this.data.login) {
+              setTimeout(() => {
+                this.notLogin = true
+              }, 0)
+            }
+          }
         } else {
-          this.handleGetDataErr()
+          this.showNotice('服务器返回出错啦~')
         }
       },
       handleGetDataErr () {
-        console.log('error')
+        this.showNotice('服务器忍痛拒绝了您~')
+      },
+      handleErrMiss () {
+        this.errMessageShow = false
+        this.errMessage = ''
+      },
+      showNotice (str) {
+        this.errMessageShow = true
+        this.errMessage = str
       }
+    },
+    created () {
+      this.getData()
     }
   }
 </script>
@@ -82,7 +105,7 @@
     position: absolute
     top: 0
     right: 0
-    bottom: .9rem
+    bottom: 1.2rem
     left: 0
     display: flex
     flex-direction: column

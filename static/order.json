@@ -1,6 +1,7 @@
 {
   "ret": true,
   "data": {
+    "login": true,
     "bought": [{
         "id": "0",
         "imgUrl": "/static/images/bought1.jpg",

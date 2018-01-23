@@ -9,12 +9,12 @@
     </header>
     <div class="login-con">
       <div class="photo-con">
-        <img src="/static/images/defaultPhoto.jpg" class="img" ref="userHeaderImg">
+        <img :src="userImg" class="img" ref="userHeaderImg">
       </div>
       <router-link to="/login" tag="div" class="login-r">
         <div class="login-cont">
-          <p class="login" ref="userName">立即登录</p>
-          <p class="login-desc" ref="userPhone">登录后享受更多特权</p>
+          <p class="login" ref="userName">{{userName}}</p>
+          <p class="login-desc" ref="userPhone">{{userTel}}</p>
         </div>
         <span class="login-link iconfont">&#xe65e;</span>
       </router-link>    
@@ -64,29 +64,80 @@
         <p class="info-title">加盟合作</p>
       </div>
     </div>
+    <tool-tip :errMessage="errMessage"
+              v-show="errMessageShow"
+              @miss="handleErrMiss">
+    </tool-tip>
     <footer-tab></footer-tab>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
   import FooterTab from 'components/common/tab/'
+  import ToolTip from 'components/ui/toolTip'
   export default {
     name: 'mine',
-    components: {
-      FooterTab
+    data () {
+      return {
+        loginStatus: false,
+        userId: '',
+        userTel: '登录后享受更多特权',
+        userImg: '/static/images/defaultPhoto.jpg',
+        userName: '立即登录',
+        errMessage: '',
+        errMessageShow: false
+      }
     },
-    created () {
-      this.$root.bus.$on('loginSucc', ($event) => {
-        this.$refs.userName.innerHTML = $event.name
-        this.$refs.userPhone.innerHTML = $event.tel
-        this.$refs.userHeaderImg.src = $event.headImg
-      })
+    components: {
+      FooterTab,
+      ToolTip
     },
     methods: {
       handleMineClick () {
         this.$router.push('/login')
+      },
+      getData () {
+        axios.get('/api/mine/getUserInfo/?format=json')
+             .then(this.getDataSucc.bind(this))
+             .catch(this.getDataError.bind(this))
+      },
+      getDataSucc (res) {
+        if (res && res.data) {
+          if (res.data.ret) {
+            if (res.data.data) {
+              const { login, id, name, tel, headImg } = res.data.data
+              login && (this.loginStatus = login)
+              if (login) {
+                id && (this.userId = id)
+                name && (this.userName = name)
+                tel && (this.userTel = tel)
+                headImg && (this.userImg = headImg)
+              }
+            } else {
+              this.showNotice('呀，数据迷路了~')
+            }
+          } else {
+            this.showNotice(res.data.errMsg)
+          }
+        } else {
+          this.showNotice('服务器没有正确返回哦^_^~')
+        }
+      },
+      getDataError () {
+        this.showNotice('服务器忍痛拒绝了您~')
+      },
+      handleErrMiss () {
+        this.errMessageShow = false
+        this.errMessage = ''
+      },
+      showNotice (str) {
+        this.errMessageShow = true
+        this.errMessage = str
       }
-
+    },
+    created () {
+      this.getData()
     }
   }
 </script>
@@ -183,4 +234,3 @@
         padding: 0 .15rem
         line-height: .88rem
 </style>
-

@@ -17,8 +17,8 @@ Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueLazyLoad, {
   preLoad: 1.3,
-  error: 'http://img1.imgtn.bdimg.com/it/u=2861676836,4281173853&fm=27&gp=0.jpg',
-  loading: 'http://img.zcool.cn/community/0176af5844caf4a8012060c87e987f.gif',
+  error: '../static/images/imgErr.jpg',
+  loading: '../static/images/loading.gif',
   attempt: 1
 })
 Vue.config.productionTip = false

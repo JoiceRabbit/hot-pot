@@ -1,6 +1,8 @@
 <template>
   <div class="search-result-con">
-    <router-link :to="'/shop/' + item.shopId" tag="div" class="item" v-for="item in searchRes">
+    <router-link :to="'/shop/' + item.shopId" 
+                 tag="div" class="item" 
+                 v-for="item in searchRes" :key="item.id">
       <div class="logo-con">
         <img :src="item.logo" class="logo">
       </div>
@@ -27,7 +29,9 @@
     watch: {
       inpValue () {
         this.showLoding = true
-        this.getSearchResultData(this.inpValue)
+        if (this.inpValue !== '') {
+          this.getSearchResultData(this.inpValue)
+        }
         this.searchRes = []
       }
     },
@@ -59,7 +63,9 @@
       }
     },
     created () {
-      this.getSearchResultData(this.inpValue)
+      if (this.inpValue !== '') {
+        this.getSearchResultData(this.inpValue)
+      }
     }
   }
 </script>

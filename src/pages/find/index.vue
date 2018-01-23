@@ -5,7 +5,6 @@
       <div class="find">发现</div>
     </header>
     <main class="content-con">
-      {{errMsg}}
       <div class="content content-left border-right">
         <div class="item" v-for="item in lists[0]" :key="item.id">
           <div class="item-left">
@@ -35,6 +34,10 @@
         <img :src="imgItem.imgUrl" class="img">
       </div>       
     </div>
+    <tool-tip :errMessage="errMessage"
+              v-show="errMessageShow"
+              @miss="handleErrMiss">
+    </tool-tip>
     <footer-tab></footer-tab>
   </div>
 </template>
@@ -42,13 +45,15 @@
 <script>
   import axios from 'axios'
   import FooterTab from 'components/common/tab/'
+  import ToolTip from 'components/ui/toolTip'
   export default {
     name: 'find-index',
     data () {
       return {
         lists: [],
         imgs: [],
-        errMsg: ''
+        errMessage: '',
+        errMessageShow: false
       }
     },
     components: {
@@ -72,11 +77,19 @@
           })
           this.lists = Object.assign({}, this.lists)
         } else {
-          this.handleGetListErr()
+          this.showNotice('呀，数据迷路啦^_^')
         }
       },
       handleGetListErr () {
-        this.errMsg = '服务器开小差了T_T,请尝试刷新页面'
+        this.showNotice('服务器开小差了T_T')
+      },
+      handleErrMiss () {
+        this.errMessageShow = false
+        this.errMessage = ''
+      },
+      showNotice (str) {
+        this.errMessageShow = true
+        this.errMessage = str
       }
     }
   }

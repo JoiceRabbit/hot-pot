@@ -48,13 +48,6 @@
       CodeInput,
       ToolTip
     },
-    created () {
-      this.$root.bus.$on('loginSucc', ($event) => {
-        this.$refs.userName.innerHTML = $event.name
-        this.$refs.userPhone.innerHTML = $event.tel
-        this.$refs.userHeaderImg.src = $event.headImg
-      })
-    },
     watch: {
       codeShow () {
         this.showLoginBtn()
