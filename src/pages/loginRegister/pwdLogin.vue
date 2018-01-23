@@ -87,6 +87,13 @@
               const data = res.data.data
               if (data.login) {
                 this.showNotice('登录成功')
+                this.$root.bus.$emit('loginSucc', {
+                  'id': data.id,
+                  'name': data.name,
+                  'tel': data.tel,
+                  'headImg': data.headImg,
+                  'login': data.login
+                })
                 this.$router.go(-1)
               } else {
                 this.showNotice('登录失败')

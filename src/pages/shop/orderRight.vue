@@ -36,7 +36,6 @@
     },
     watch: {
       shopOrderInfo () {
-        console.log(this.shopOrderInfo)
         if (this.shopOrderInfo.length > 4) {
           this.$refs.wrapper.style.height = '11.5rem'
           this.scroller.refresh()
@@ -55,12 +54,6 @@
       }
     },
     methods: {
-<<<<<<< HEAD
-      createScroll () {
-        this.scroller = new BScroll(this.$refs.wrapper)
-      },
-=======
->>>>>>> 888b8ee08d190930f5eadbb5779b51209c6c0fa8
       handleChangeFood (e) {
         let obj = JSON.parse(JSON.stringify(e))
         if (this.cartList.length) {
