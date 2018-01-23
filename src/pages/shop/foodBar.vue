@@ -46,8 +46,6 @@
           count: this.foodNum
         })
       }
-    },
-    mounted () {
     }
   }
 </script>
