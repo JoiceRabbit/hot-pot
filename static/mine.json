@@ -6,6 +6,6 @@
 		"name": "234151",
 		"tel": "12345678901",
 		"headImg": "/media/head/toxiang.jpg",
-		"login": false
+		"login": true
 	}	
 }

@@ -64,6 +64,9 @@
         <p class="info-title">加盟合作</p>
       </div>
     </div>
+    <div class="logout-con" v-show="loginStatus">
+      <div class="logout" @click="handleLogoutClick">退出登录</div>
+    </div>
     <tool-tip :errMessage="errMessage"
               v-show="errMessageShow"
               @miss="handleErrMiss">
@@ -118,7 +121,7 @@
               this.showNotice('呀，数据迷路了~')
             }
           } else {
-            this.showNotice(res.data.errMsg)
+            this.showNotice(res.data.errMsg ? res.data.errMsg : '服务器忍痛拒绝了您')
           }
         } else {
           this.showNotice('服务器没有正确返回哦^_^~')
@@ -134,6 +137,36 @@
       showNotice (str) {
         this.errMessageShow = true
         this.errMessage = str
+      },
+      handleLogoutClick () {
+        axios.get('/api/user/logout/?format=json')
+          .then(this.handleLogoutSucc.bind(this))
+          .catch(this.handleLogoutErr.bind(this))
+      },
+
+      handleLogoutSucc (res) {
+        if (res && res.data) {
+          if (res.data.ret) {
+            if (res.data.data) {
+              const logout = res.data.data.logout
+              if (logout) {
+                window.location.reload()
+              } else {
+                this.showNotice('登陆失败')
+              }
+            } else {
+              this.showNotice('呀，数据迷路了~')
+            }
+          } else {
+            this.showNotice(res.data.errMsg ? res.data.errMsg : '服务器忍痛拒绝了您')
+          }
+        } else {
+          this.showNotice('服务器没有正确返回哦^_^~')
+        }
+      },
+
+      handleLogoutErr () {
+        this.showNotice('服务器忍痛拒绝了您~')
       }
     },
     created () {
@@ -145,92 +178,107 @@
 <style scoped lang="stylus">
   @import '../../assets/styles/common/varibles.styl'
   @import '../../assets/styles/common/mixin.styl'
-  .addr-coll,
-  .gold-mall-con,
-  .other-con
-    margin-bottom: .3rem
-  .block-con
-    background: #fff
-    font-size: .32rem
-    color: #666
-    border-color: #e0dcdc
-    padding-left: .2rem
-    .item-con
+  .mine
+    padding-bottom: 1.2rem
+    .addr-coll,
+    .gold-mall-con,
+    .other-con
+      margin-bottom: .3rem
+    .block-con
+      background: #fff
+      font-size: .32rem
+      color: #666
       border-color: #e0dcdc
+      padding-left: .2rem
+      .item-con
+        border-color: #e0dcdc
+        display: flex
+        line-height: 1rem
+        .info-icon
+          margin-right: .4rem
+    .benefit
+      border-color: #e0dcdc
+      margin-bottom: .3rem
+      background: #fff
       display: flex
-      line-height: 1rem
-      .info-icon
-        margin-right: .4rem
-  .benefit
-    border-color: #e0dcdc
-    margin-bottom: .3rem
-    background: #fff
-    display: flex
-    padding-top: .6rem
-    .benefit-item
-      width: 33.33%
-      text-align: center
-      .benefit-icon
-        font-size: .6rem
-      .wallet-icon
-        color: #008aff
-      .red-icon
-        background: linear-gradient(to right, #ff6a00, #ff3500)
-        -webkit-background-clip: text
-        color: transparent
-      .gold-icon
-        background: linear-gradient(to right, #ffc900, #ffa500)
-        -webkit-background-clip: text
-        color: transparent
-      .benefit-title
-        line-height: .52rem
-        font-size: .24rem
-        color: #666666
-  .login-con
-    background: $bgColor
-    display: flex
-    padding: .6rem .4rem
-    color: #fff
-    .login-r
-      width: 100%
+      padding-top: .6rem
+      .benefit-item
+        width: 33.33%
+        text-align: center
+        .benefit-icon
+          font-size: .6rem
+        .wallet-icon
+          color: #008aff
+        .red-icon
+          background: linear-gradient(to right, #ff6a00, #ff3500)
+          -webkit-background-clip: text
+          color: transparent
+        .gold-icon
+          background: linear-gradient(to right, #ffc900, #ffa500)
+          -webkit-background-clip: text
+          color: transparent
+        .benefit-title
+          line-height: .52rem
+          font-size: .24rem
+          color: #666666
+    .login-con
+      background: $bgColor
       display: flex
-      justify-content: space-between
-      .login-link
-        font-size: .32rem
-        line-height: 1.2rem
-      .login
-        font-size: .36rem
-        line-height: .7rem
-      .login-desc
-        font-size: .26rem
-        line-height: .4rem
-    .photo-con
-      width: 1.2rem
-      height: 1.2rem
-      margin-right: .5rem
-      .img
+      padding: .6rem .4rem
+      color: #fff
+      .login-r
         width: 100%
-        border-radius: .6rem
-  .mine-con
-    height: .88rem
-    background: $bgColor
-    font-size: .36rem
-    color: #fff  
-    text-align: center
-    line-height: .88rem
-    font-weight: 700   
-    .mine
-      margin: 0 auto;
-      width: 2rem      
-      ellipsis()
-    .push-set-con
-      position: absolute
-      top: 0
-      right: 0
-      padding: 0 .15rem
-      display: flex
-      .header-r
-        font-size: .28rem
+        display: flex
+        justify-content: space-between
+        .login-link
+          font-size: .32rem
+          line-height: 1.2rem
+        .login
+          font-size: .36rem
+          line-height: .7rem
+        .login-desc
+          font-size: .26rem
+          line-height: .4rem
+      .photo-con
+        width: 1.2rem
+        height: 1.2rem
+        margin-right: .5rem
+        .img
+          width: 100%
+          border-radius: .6rem
+    .mine-con
+      height: .88rem
+      background: $bgColor
+      font-size: .36rem
+      color: #fff  
+      text-align: center
+      line-height: .88rem
+      font-weight: 700   
+      .mine
+        margin: 0 auto;
+        width: 2rem      
+        ellipsis()
+      .push-set-con
+        position: absolute
+        top: 0
+        right: 0
         padding: 0 .15rem
         line-height: .88rem
+        display: flex
+        .header-r
+          font-size: .28rem
+          padding: 0 .15rem
+          line-height: .88rem
+    .logout-con
+      padding: .3rem
+      .logout
+        width: 100%
+        height: 1rem
+        line-height 1rem
+        border-radius: .3rem
+        font-size: .4rem
+        color: #fff
+        font-weight: bold
+        text-align: center
+        background: #ff4444
 </style>

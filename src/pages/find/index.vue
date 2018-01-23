@@ -57,7 +57,8 @@
       }
     },
     components: {
-      FooterTab
+      FooterTab,
+      ToolTip
     },
     created () {
       axios.get('/api/find/?format=json')

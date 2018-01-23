@@ -24,16 +24,9 @@ Vue.use(VueLazyLoad, {
 Vue.config.productionTip = false
 FastClick.attach(document.body)
 
-var bus = new Vue()
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  data () {
-    return {
-      bus
-    }
-  },
   router,
   template: '<App/>',
   components: { App }
