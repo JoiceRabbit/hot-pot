@@ -1,4 +1,7 @@
 {
   "ret": true,
-  "errMsg": ""
+  "errMsg": "",
+  "data": {
+    "send": true
+  }
 }

@@ -84,17 +84,33 @@
         this.errMessage = str
       },
       handleSendCodeSucc (res) {
-        if (res.data.ret) {
-          this.sendCode = true
-          this.showNotice('发送成功')
-          this.countDown = true
+        if (res && res.data) {
+          if (res.data.ret) {
+            if (res.data.data) {
+              const data = res.data.data
+              if (data.send) {
+                this.sendCode = true
+                this.showNotice('发送成功')
+                this.countDown = true
+              } else {
+                this.sendCode = false
+                this.showNotice('发送失败')
+              }
+            } else {
+              this.sendCode = false
+              this.showNotice('服务器处理出错')
+            }
+          } else {
+            this.sendCode = false
+            this.codeShow = false
+            this.showNotice(res.data.errMsg ? res.data.errMsg : '服务器错误，请检查您的手机号')
+          }
         } else {
-          this.sendCode = false
-          this.showNotice('发送失败，请检查您的手机号')
+          this.showNotice('数据获取失败')
         }
       },
       handleSendCodeErr () {
-        this.showNotice('系统异常')
+        this.showNotice('服务器拒绝了您的请求')
       },
       handleLogin (e) {
         this.login = e.login
@@ -122,17 +138,27 @@
       },
       handleLoginClickSucc (res) {
         if (res && res.data) {
-          const data = res.data
-          if (data.ret) {
-            this.showNotice('登录成功')
-            this.$router.go(-1)
+          if (res.data.ret) {
+            if (res.data.data) {
+              const data = res.data.data
+              if (data.login) {
+                this.showNotice('登录成功')
+                this.$router.go(-1)
+              } else {
+                this.showNotice('登录失败')
+              }
+            } else {
+              this.showNotice('服务器处理出错了')
+            }
+          } else {
+            this.showNotice(res.data.errMsg ? res.data.errMsg : '服务器错误')
           }
         } else {
-          this.showNotice('系统异常')
+          this.showNotice('数据获取失败')
         }
       },
       handleLoginClickErr () {
-        this.showNotice('系统异常')
+        this.showNotice('服务器拒绝了您的请求')
       },
       handleStop () {
         this.countDown = false

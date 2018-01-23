@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
         '/': {
             target: 'http://www.youngfit.cn',
-            changeOrigin:true
+            changeOrigin: true
         }
     },
 

@@ -82,19 +82,27 @@
       },
       handleLoginSucc (res) {
         if (res && res.data) {
-          const data = res.data
-          if (data.ret) {
-            this.showNotice('登录成功')
-            this.$router.go(-1)
+          if (res.data.ret) {
+            if (res.data.data) {
+              const data = res.data.data
+              if (data.login) {
+                this.showNotice('登录成功')
+                this.$router.go(-1)
+              } else {
+                this.showNotice('登录失败')
+              }
+            } else {
+              this.showNotice('服务器处理出错')
+            }
           } else {
-            this.showNotice('登陆失败')
+            this.showNotice(res.data.errMsg ? res.data.errMsg : '服务器异常')
           }
         } else {
           this.showNotice('数据获取失败')
         }
       },
       handleLoginErr () {
-        this.showNotice('系统异常')
+        this.showNotice('服务器拒绝了您的请求')
       }
     }
   }

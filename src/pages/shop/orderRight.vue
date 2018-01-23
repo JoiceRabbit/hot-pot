@@ -55,9 +55,12 @@
       }
     },
     methods: {
+<<<<<<< HEAD
       createScroll () {
         this.scroller = new BScroll(this.$refs.wrapper)
       },
+=======
+>>>>>>> 888b8ee08d190930f5eadbb5779b51209c6c0fa8
       handleChangeFood (e) {
         let obj = JSON.parse(JSON.stringify(e))
         if (this.cartList.length) {
@@ -84,6 +87,11 @@
         if (this.$refs[e.el]) {
           this.scroller.scrollToElement(this.$refs[e.el][0])
         }
+      },
+      createScroll () {
+        this.scroller = new BScroll(this.$refs.wrapper, {
+          click: true
+        })
       }
     },
     mounted () {
