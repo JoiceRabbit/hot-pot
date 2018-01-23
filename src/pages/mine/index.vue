@@ -9,12 +9,12 @@
     </header>
     <div class="login-con">
       <div class="photo-con">
-        <img src="/static/images/defaultPhoto.jpg" class="img">
+        <img src="/static/images/defaultPhoto.jpg" class="img" ref="userHeaderImg">
       </div>
       <router-link to="/login" tag="div" class="login-r">
         <div class="login-cont">
-          <p class="login">立即登录</p>
-          <p class="login-desc">登录后享受更多特权</p>
+          <p class="login" ref="userName">立即登录</p>
+          <p class="login-desc" ref="userPhone">登录后享受更多特权</p>
         </div>
         <span class="login-link iconfont">&#xe65e;</span>
       </router-link>    
@@ -75,10 +75,18 @@
     components: {
       FooterTab
     },
+    created () {
+      this.$root.bus.$on('loginSucc', ($event) => {
+        this.$refs.userName.innerHTML = $event.name
+        this.$refs.userPhone.innerHTML = $event.tel
+        this.$refs.userHeaderImg.src = $event.headImg
+      })
+    },
     methods: {
       handleMineClick () {
         this.$router.push('/login')
       }
+
     }
   }
 </script>

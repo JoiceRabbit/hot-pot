@@ -4,8 +4,19 @@
       <div class="head-title">订单</div>
       <span class="lunch">午餐</span>
     </header>
-    <bought :bought="data.bought" ref="bought"></bought>
-    <orders :orderList="data.orderList"  ref="orders" class="orders"></orders>
+    <transition enter-active-class="animated bounceInDown"
+                leave-active-class="animated bounceOutDown">
+      <router-link to="/login" tag="div" class="not-login" v-if="notLogin">
+        未登录
+      </router-link>
+    </transition>
+    <bought :bought="data.bought" 
+            ref="bought" 
+            v-if="!notLogin"></bought>
+    <orders :orderList="data.orderList"  
+            ref="orders" 
+            class="orders"
+            v-if="!notLogin"></orders>
     <footer-tab></footer-tab>   
   </div>
 </template>
@@ -19,7 +30,8 @@
     name: 'order',
     data () {
       return {
-        data: {}
+        data: {},
+        notLogin: true
       }
     },
     components: {
@@ -28,7 +40,12 @@
       FooterTab
     },
     created () {
-      this.getData()
+      this.$root.bus.$on('loginSucc', ($event) => {
+        if ($event.login) {
+          this.getData()
+          this.notLogin = !$event.login
+        }
+      })
     },
     watch: {
       data () {
@@ -69,6 +86,13 @@
     left: 0
     display: flex
     flex-direction: column
+    .not-login
+      width: 3rem
+      line-height: 1rem
+      border-radius: .2rem
+      background: $bgColor
+      text-align: center
+      margin: auto
     .orders
       flex: 1
       overflow: hidden
