@@ -37,18 +37,16 @@
     },
     methods: {
       debouce () {
-        let this_ = this
-        let time = 1000
-        return (() => {
+        let _this = this
+        return (function () {
           let timer = null
           return () => {
             clearTimeout(timer)
             timer = setTimeout(() => {
-              console.log('0123')
-              axios.get('/api/api/search/search/?search=' + this_.inpValue + '&format=json')
-                   .then(this_.getSearchResultSucc.bind(this_))
-                   .catch(this_.getSearchResultError.bind(this_))
-            }, time)
+              axios.get('/api/api/search/search/?search=' + _this.inpValue + '&format=json')
+                   .then(_this.getSearchResultSucc.bind(_this))
+                   .catch(_this.getSearchResultError.bind(_this))
+            }, 1000)
           }
         })()
       },

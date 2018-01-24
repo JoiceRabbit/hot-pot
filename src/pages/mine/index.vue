@@ -11,13 +11,13 @@
       <div class="photo-con">
         <img :src="userImg" class="img" ref="userHeaderImg">
       </div>
-      <router-link to="/login" tag="div" class="login-r">
+      <div class="login-r" @click="handleGoLogin">
         <div class="login-cont">
           <p class="login" ref="userName">{{userName}}</p>
           <p class="login-desc" ref="userPhone">{{userTel}}</p>
         </div>
         <span class="login-link iconfont">&#xe65e;</span>
-      </router-link>    
+      </div>    
     </div>
     <div class="benefit border-bottom">
       <div class="wallet benefit-item">
@@ -97,8 +97,12 @@
       ToolTip
     },
     methods: {
-      handleMineClick () {
-        this.$router.push('/login')
+      handleGoLogin () {
+        if (!this.loginStatus) {
+          this.$router.push('/login')
+        } else {
+          this.showNotice('您已登录')
+        }
       },
       getData () {
         axios.get('/api/mine/getUserInfo/?format=json')
