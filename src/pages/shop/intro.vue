@@ -5,7 +5,7 @@
         配送信息
       </div>
       <div class="send-info-con">
-        {{shopIntroInfo.information ? shopIntroInfo.information : 暂无}}
+        {{shopIntroInfo.information}}
       </div>
    </div>
    <div class="info-con">
