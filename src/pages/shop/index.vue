@@ -24,7 +24,7 @@
              @click="handleIntroTabClick">商家</div>
       </div>
     </div>
-    <div class="tab-con">
+    <div class="tab-con" ref="tabCon">
       <component :is="componentActive"
                  :shopOrderInfo="shopOrderInfo"
                  :shopIntroInfo="shopIntroInfo"></component>
@@ -125,8 +125,10 @@
         if (scrollTop >= this.tabTop) {
           this.$refs.tab && (this.$refs.tab.style.position = 'fixed')
           this.$refs.tab && (this.$refs.tab.style.top = 0)
+          this.$refs.tabCon && (this.$refs.tabCon.style.paddingTop = '.72rem')
         } else {
           this.$refs.tab && (this.$refs.tab.style.position = '')
+          this.$refs.tabCon && (this.$refs.tabCon.style.paddingTop = '0')
         }
       }
     },
