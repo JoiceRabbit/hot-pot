@@ -139,9 +139,12 @@
         this.errMessage = str
       },
       handleLogoutClick () {
-        axios.get('/api/user/logout/?format=json')
+        const userLogout = confirm('确认退出登录吗？')
+        if (userLogout) {
+          axios.get('/api/user/logout/?format=json')
           .then(this.handleLogoutSucc.bind(this))
           .catch(this.handleLogoutErr.bind(this))
+        }
       },
 
       handleLogoutSucc (res) {

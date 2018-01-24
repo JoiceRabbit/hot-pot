@@ -13,7 +13,7 @@
         未登录
       </router-link>
     </transition>
-    <div v-show="!notLogin" class="order-list-con">
+    <div v-show="data.login" class="order-list-con">
       <bought :bought="data.bought" 
               ref="bought">
       </bought>

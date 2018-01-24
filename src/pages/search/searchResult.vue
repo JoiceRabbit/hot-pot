@@ -23,23 +23,30 @@
     data () {
       return {
         showLoding: false,
-        searchRes: []
+        searchRes: [],
+        time: 3000
       }
     },
     watch: {
       inpValue () {
         this.showLoding = true
         if (this.inpValue !== '') {
-          this.getSearchResultData(this.inpValue)
+          this.debouce()
         }
         this.searchRes = []
       }
     },
     methods: {
-      getSearchResultData (searchValue) {
-        axios.get('/api/api/search/search/?search=' + searchValue + '&format=json')
-             .then(this.getSearchResultSucc.bind(this))
-             .catch(this.getSearchResultError.bind(this))
+      debouce () {
+        let timer = null
+        return (() => {
+          clearTimeout(timer)
+          timer = setTimeout(() => {
+            axios.get('/api/api/search/search/?search=' + this.inpValue + '&format=json')
+                 .then(this.getSearchResultSucc.bind(this))
+                 .catch(this.getSearchResultError.bind(this))
+          }, this.time)
+        })()
       },
       getSearchResultSucc (res) {
         if (res && res.data) {
@@ -64,7 +71,7 @@
     },
     created () {
       if (this.inpValue !== '') {
-        this.getSearchResultData(this.inpValue)
+        this.debouce(this.inpValue)
       }
     }
   }
