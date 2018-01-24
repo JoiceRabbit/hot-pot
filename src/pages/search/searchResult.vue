@@ -23,29 +23,33 @@
     data () {
       return {
         showLoding: false,
-        searchRes: [],
-        time: 3000
+        searchRes: []
       }
     },
     watch: {
       inpValue () {
         this.showLoding = true
         if (this.inpValue !== '') {
-          this.debouce()
+          this.newBounce()
         }
         this.searchRes = []
       }
     },
     methods: {
       debouce () {
-        let timer = null
+        let this_ = this
+        let time = 1000
         return (() => {
-          clearTimeout(timer)
-          timer = setTimeout(() => {
-            axios.get('/api/api/search/search/?search=' + this.inpValue + '&format=json')
-                 .then(this.getSearchResultSucc.bind(this))
-                 .catch(this.getSearchResultError.bind(this))
-          }, this.time)
+          let timer = null
+          return () => {
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+              console.log('0123')
+              axios.get('/api/api/search/search/?search=' + this_.inpValue + '&format=json')
+                   .then(this_.getSearchResultSucc.bind(this_))
+                   .catch(this_.getSearchResultError.bind(this_))
+            }, time)
+          }
         })()
       },
       getSearchResultSucc (res) {
@@ -70,8 +74,9 @@
       }
     },
     created () {
+      this.newBounce = this.debouce()
       if (this.inpValue !== '') {
-        this.debouce(this.inpValue)
+        this.newBounce()
       }
     }
   }

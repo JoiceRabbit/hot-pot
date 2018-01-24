@@ -5,26 +5,26 @@
         配送信息
       </div>
       <div class="send-info-con">
-        {{shopIntroInfo.information}}
+        {{shopIntroInfo.information ? shopIntroInfo.information : 暂无}}
       </div>
    </div>
    <div class="info-con">
      <div class="info-title">商家实景</div>
      <div class="intro-img-con">
-       <img class="intro-img" v-for="item in shopIntroInfo.pics" :key="item.id" :src="item.imgUrl" alt="">
+       <img class="intro-img" v-for="item in shopIntroInfo.pics" :key="item.id" v-lazy="item.imgUrl" alt="">
      </div>
    </div>
    <div class="info-con">
       <div class="info-title">
         商家信息
       </div>
-      <div class="intro-phone">
+      <div class="intro-phone intro-item">
         商家电话：{{shopIntroInfo.phone}}
       </div>
-      <div class="intro-address">
+      <div class="intro-address intro-item">
         地址：{{shopIntroInfo.address}}
       </div>
-      <div class="intro-openingHours">
+      <div class="intro-openingHours intro-item">
         营业时间{{shopIntroInfo.openingHours}}
       </div>
    </div>
@@ -45,12 +45,16 @@
     background: #ccc
     .info-con
       padding: .2rem .4rem
-      margin-bottom: .2rem
+      margin-bottom: .35rem
       background: #fff
       .info-title
         font-size: .34rem
         line-height: .65rem
         font-weight: bold
+      .intro-item
+        font-size: .26rem
+        line-height: .5rem
+        color: #333
       .send-info-con
         line-height: .34rem
       .intro-img-con

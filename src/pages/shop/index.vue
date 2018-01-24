@@ -27,9 +27,10 @@
     <div class="tab-con" ref="tabCon">
       <component :is="componentActive"
                  :shopOrderInfo="shopOrderInfo"
-                 :shopIntroInfo="shopIntroInfo"></component>
+                 :shopIntroInfo="shopIntroInfo"
+                 :shopId="shopId"></component>
     </div>
-    <shop-cart></shop-cart>
+    <shop-cart v-show="cart"></shop-cart>
   </div>
 </template>
 
@@ -37,7 +38,7 @@
   import axios from 'axios'
   import ShopHeader from './header.vue'
   import ShopOrder from './order.vue'
-  import ShopEvalute from './evalute.vue'
+  import ShopEvalute from './evaluate.vue'
   import ShopIntro from './intro.vue'
   import ShopCart from './cart.vue'
   export default {
@@ -56,7 +57,8 @@
         componentActive: 'ShopOrder',
         errMessage: '',
         errMessageShow: false,
-        tabTop: 0
+        tabTop: 0,
+        cart: true
       }
     },
     components: {
@@ -101,18 +103,21 @@
       },
       handleOrderTabClick () {
         this.componentActive = 'ShopOrder'
+        this.cart = true
         this.orderActive = true
         this.evaluteActive = false
         this.introActive = false
       },
       handleEvaluteTabClick () {
         this.componentActive = 'ShopEvalute'
+        this.cart = false
         this.orderActive = false
         this.evaluteActive = true
         this.introActive = false
       },
       handleIntroTabClick () {
         this.componentActive = 'ShopIntro'
+        this.cart = false
         this.orderActive = false
         this.evaluteActive = false
         this.introActive = true
