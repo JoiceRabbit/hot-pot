@@ -13,7 +13,7 @@
         未登录
       </router-link>
     </transition>
-    <div v-show="!notLogin">
+    <div v-show="!notLogin" class="order-list-con">
       <bought :bought="data.bought" 
               ref="bought">
       </bought>
@@ -116,9 +116,6 @@
       background: $bgColor
       text-align: center
       margin: auto
-    .orders
-      flex: 1
-      overflow: hidden
     .header
       position: relative
       background: $bgColor
@@ -135,4 +132,11 @@
         top: 0
         font-size: .28rem
         line-height: .88rem
+    .order-list-con
+      flex: 1
+      display: flex
+      flex-direction: column
+      .orders
+        flex: 1
+        overflow: hidden
 </style>

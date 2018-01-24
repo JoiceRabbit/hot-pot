@@ -12,6 +12,10 @@
     <special :special="special"></special>
     <div class="shopList-title" v-show="show">— 推荐商家 —</div>
     <shop-list :shopList="shopList"></shop-list>
+    <tool-tip :errMessage="errMessage"
+              v-show="errMessageShow"
+              @miss="handleErrMiss">
+    </tool-tip>
     <footer-tab></footer-tab>
   </div>
 
@@ -23,6 +27,7 @@
   import Swiper from './swiper.vue'
   import Special from './special.vue'
   import ShopList from './shopList.vue'
+  import ToolTip from 'components/ui/toolTip'
   export default {
     name: 'index',
     data () {
@@ -32,14 +37,17 @@
         shopList: [],
         special: [],
         seacherTop: 0,
-        show: false
+        show: false,
+        errMessage: '',
+        errMessageShow: false
       }
     },
     components: {
       FooterTab,
       Swiper,
       ShopList,
-      Special
+      Special,
+      ToolTip
     },
     created () {
       this.getIndexData()
@@ -68,11 +76,11 @@
           data.special && (this.special = data.special)
           data.shopList && (this.shopList = data.shopList)
         } else {
-          this.handleGetDataErr()
+          this.showNotice('呀，数据迷路了~')
         }
       },
       handleGetDataErr () {
-        console.log('error')
+        this.showNotice('服务器忍痛拒绝了您~')
       },
       handleScroll () {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -82,6 +90,14 @@
         } else {
           this.$refs.seacher.style.position = ''
         }
+      },
+      handleErrMiss () {
+        this.errMessageShow = false
+        this.errMessage = ''
+      },
+      showNotice (str) {
+        this.errMessageShow = true
+        this.errMessage = str
       }
     }
   }
