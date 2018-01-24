@@ -37,7 +37,7 @@
     watch: {
       shopOrderInfo () {
         if (this.shopOrderInfo.length > 4) {
-          this.$refs.wrapper.style.height = '11.5rem'
+          this.$refs.wrapper.style.height = '10.5rem'
           this.scroller.refresh()
         } else {
           this.$nextTick(() => {

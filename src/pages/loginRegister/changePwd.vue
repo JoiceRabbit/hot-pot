@@ -79,6 +79,7 @@
       },
       handleCodeShow (e) {
         this.codeShow = e.codeShow
+        this.phoneNum = e.phoneNum
         this.checkNum = this.$refs.phone.checkPhoneNum()
         this.showLoginBtn()
       },
