@@ -67,7 +67,7 @@
     watch: {
       list () {
         this.$nextTick(() => {
-          this.scroller.refresh()
+          this.scrollerPar.refresh()
         })
       }
     },
@@ -117,7 +117,7 @@
       },
 
       createScroll () {
-        this.scroller = new BScroll(this.$refs.wrapper, {
+        this.scrollerPar = new BScroll(this.$refs.wrapper, {
           click: true
         })
       }
@@ -133,86 +133,88 @@
 
 <style scoped lang="stylus">
   @import '../../assets/styles/common/varibles.styl'
-  .evaluate
-    height: 6.2rem
-    padding: .4rem
-    padding-bottom: 0
-    overflow: hidden
-    .evaluate-con
-      display: flex
-      flex-direction: column
-      .evaluate-item
+  .eva-con
+    padding-bottom: 1.34rem
+    .evaluate
+      height: 6.2rem
+      padding: .4rem
+      padding-bottom: 0
+      overflow: hidden
+      .evaluate-con
         display: flex
         flex-direction: column
-        margin-bottom: .2rem
-        .info
+        .evaluate-item
           display: flex
-          .head-img-con
-            width: .6rem
-            height: .6rem
-            border-radius: .3rem
-            .head-img
-              width: 100%
-          .user-info
+          flex-direction: column
+          margin-bottom: .2rem
+          .info
             display: flex
-            padding-left: .3rem
-            flex-direction: column
-            .user-top
-              .user-name
-                line-height: .35rem
-                font-size: .35rem
-                font-weight: bold
-                color: #333
-              .eva-date
-                line-height: .35rem
-                font-size: .25rem
-                color: #999
-            .user-bto
-              display: flex
-              height: .3rem
-              line-height: .3rem
-              padding-right: .1rem
-              .send
-                padding-left: .2rem
-                font-size: .25rem
-                color: #999
-        .content-con
-          padding-left: .6rem
-          padding-bottom: .2rem
-          .img-con
-            display: flex
-            flex-wrap: wrap
-            padding-left: .2rem
-            margin-top: .2rem
-            .img-box
-              width: 1.42rem
-              height: 1.42rem
-              margin-right: .2rem
-              .par-img
+            .head-img-con
+              width: .6rem
+              height: .6rem
+              border-radius: .3rem
+              .head-img
                 width: 100%
-          .content
-            font-size: .2rem
-            line-height: .35rem
-            text-indent: .4rem
-            padding-right: .2rem
-            color: #666
-    .tip
-      margin: 2rem auto 0
-      width: 5rem
-      height: .8rem
-      background: $bgColor
-      border-radius: .1rem
+            .user-info
+              display: flex
+              padding-left: .3rem
+              flex-direction: column
+              .user-top
+                .user-name
+                  line-height: .35rem
+                  font-size: .35rem
+                  font-weight: bold
+                  color: #333
+                .eva-date
+                  line-height: .35rem
+                  font-size: .25rem
+                  color: #999
+              .user-bto
+                display: flex
+                height: .3rem
+                line-height: .3rem
+                padding-right: .1rem
+                .send
+                  padding-left: .2rem
+                  font-size: .25rem
+                  color: #999
+          .content-con
+            padding-left: .6rem
+            padding-bottom: .2rem
+            .img-con
+              display: flex
+              flex-wrap: wrap
+              padding-left: .2rem
+              margin-top: .2rem
+              .img-box
+                width: 1.42rem
+                height: 1.42rem
+                margin-right: .2rem
+                .par-img
+                  width: 100%
+            .content
+              font-size: .2rem
+              line-height: .35rem
+              text-indent: .4rem
+              padding-right: .2rem
+              color: #666
+      .tip
+        margin: 2rem auto 0
+        width: 5rem
+        height: .8rem
+        background: $bgColor
+        border-radius: .1rem
+        text-align: center
+        line-height: .8rem
+    .footer
+      position: fixed
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 1.34rem
+      font-size: .4rem
+      line-height: 1.34rem
       text-align: center
-      line-height: .8rem
-  .footer
-    position: fixed
-    bottom: 0
-    left: 0
-    width: 100%
-    height: 1.34rem
-    font-size: .4rem
-    line-height: 1.34rem
-    text-align: center
-    color: #fff
-    background: #666
+      color: #fff
+      background: #666
 </style>

@@ -64,8 +64,7 @@
     bottom: 0
     left: 0
     padding: 0 .44rem
-    background: url(../../../static/images/login-bg.png) no-repeat
-    background-size: 100% 100%
+    background: linear-gradient(#ffc36b, #ff9944)
     .login-main
       padding-top: 1.1rem
       .logo-con

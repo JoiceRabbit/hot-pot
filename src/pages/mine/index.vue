@@ -39,10 +39,12 @@
         <p class="addr-icon info-icon iconfont">&#xe603;</p>
         <p class="info-title">收货地址</p>
       </div>
-      <router-link tag="div" to="/change" class="coll-con item-con border-bottom">
+      <div @click="handleGoChangePwd" 
+           class="coll-con item-con border-bottom"
+           v-if="loginStatus">
         <p class="coll-icon info-icon iconfont">&#xe678;</p>
         <p class="info-title">密码设置</p>
-      </router-link>
+      </div>
     </div>
     <div class="gold-mall-con block-con border-top">
       <div class="gold-mall item-con border-bottom">
@@ -174,6 +176,12 @@
 
       handleLogoutErr () {
         this.showNotice('服务器忍痛拒绝了您~')
+      },
+
+      handleGoChangePwd () {
+        if (this.loginStatus) {
+          this.$router.push('/change')
+        }
       }
     },
     created () {

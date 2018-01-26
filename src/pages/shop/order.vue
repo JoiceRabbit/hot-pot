@@ -1,7 +1,7 @@
 <template>
   <div class="order">
     <order-left :shopOrderInfo="shopOrderInfo"></order-left>
-    <order-right :shopOrderInfo="shopOrderInfo"></order-right>
+    <order-right :shopOrderInfo="shopOrderInfo" :ch="ch"></order-right>
   </div>
 </template>
 
@@ -11,7 +11,8 @@
   export default {
     name: 'shopOrder',
     props: {
-      shopOrderInfo: Array
+      shopOrderInfo: Array,
+      ch: String
     },
     components: {
       OrderLeft,

@@ -196,7 +196,7 @@
     right: 0
     bottom: 0
     left: 0
-    background: $bgColor
+    background: linear-gradient(#ffc36b, #ff9944)
     padding: 2.5rem .5rem 0 .5rem
     .pwd-input-con
       position: relative

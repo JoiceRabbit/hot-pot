@@ -28,7 +28,8 @@
       <component :is="componentActive"
                  :shopOrderInfo="shopOrderInfo"
                  :shopIntroInfo="shopIntroInfo"
-                 :shopId="shopId"></component>
+                 :shopId="shopId"
+                 :ch="ch"></component>
     </div>
     <shop-cart v-show="cart"></shop-cart>
   </div>
@@ -36,6 +37,7 @@
 
 <script>
   import axios from 'axios'
+  import bus from './bus.js'
   import ShopHeader from './header.vue'
   import ShopOrder from './order.vue'
   import ShopEvalute from './evaluate.vue'
@@ -58,7 +60,8 @@
         errMessage: '',
         errMessageShow: false,
         tabTop: 0,
-        cart: true
+        cart: true,
+        ch: ''
       }
     },
     components: {
@@ -68,7 +71,15 @@
       ShopIntro,
       ShopCart
     },
+    watch: {
+      componentActive () {
+        bus.$on('height', this.handleChangeHeight)
+      }
+    },
     methods: {
+      handleChangeHeight (e) {
+        this.ch = e.value
+      },
       handleErrMiss () {
         this.errMessageShow = false
         this.errMessage = ''
@@ -139,6 +150,7 @@
     },
     created () {
       this.getShopInfo()
+      bus.$on('height', this.handleChangeHeight)
     },
     mounted () {
       this.tabTop = this.$refs.tab.offsetTop

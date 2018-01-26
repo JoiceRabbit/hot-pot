@@ -25,25 +25,34 @@
 <script>
   import FoodBar from './foodBar.vue'
   import BScroll from 'better-scroll'
-  import bus from './bus'
+  import bus from './bus.js'
   export default {
     name: 'shopOrderRight',
     props: {
-      shopOrderInfo: Array
+      shopOrderInfo: Array,
+      ch: String
     },
     components: {
       FoodBar
     },
     watch: {
-      shopOrderInfo () {
-        if (this.shopOrderInfo.length > 4) {
-          this.$refs.wrapper.style.height = '10.5rem'
-          this.scroller.refresh()
-        } else {
-          this.$nextTick(() => {
-            this.scroller.refresh()
-          })
-        }
+      shopOrderInfo: {
+        handler () {
+          if (this.shopOrderInfo.length > 4) {
+            this.$refs.wrapper.style.height = '10.5rem'
+            bus.$emit('height', {
+              value: '10.5rem'
+            })
+            this.$nextTick(() => {
+              this.scroller.refresh()
+            })
+          } else {
+            this.$nextTick(() => {
+              this.scroller.refresh()
+            })
+          }
+        },
+        deep: true
       }
     },
     data () {
@@ -88,8 +97,10 @@
       }
     },
     mounted () {
+      this.ch && (this.$refs.wrapper.style.height = this.ch)
       this.createScroll()
       bus.$on('cate', this.handleScrollEl)
+      this.scroller && this.scroller.refresh()
     }
   }
 </script>
