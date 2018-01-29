@@ -1,8 +1,7 @@
 <template>
   <div class="change-pwd">
     <div class="pwd-input-con">
-      <phone-input @codeShow="handleCodeShow"
-                   ref="phone"></phone-input>
+      <input type="text" :value="'手机号 : ' + tel" disabled class="default-input">
     </div>
     <div class="pwd-input-con">
       <pwd-input ref="password"
@@ -33,43 +32,44 @@
 
 <script>
   import ToolTip from 'components/ui/toolTip.vue'
-  import PhoneInput from './phoneInput'
   import PwdInput from './pwdInput.vue'
   import CodeInput from './codeInput.vue'
   import axios from 'axios'
   export default {
     name: 'ChangePwd',
+    props: {
+      tel: String
+    },
     data () {
       return {
-        phoneNum: '', //  手机号
         errMessage: '', //  错误或提示信息
         code: '', //  验证码
-        codeShow: false, // 发送验证码是否展示
+        password: '', // 密码
+        password2: '', // 二次输入的密码
+        codeShow: true, // 发送验证码是否展示
         errMessageShow: false, //  错误或提示是否展示
         sendCode: false, //  是否成功发送验证码
         login: false,  // 验证码正则验证
         loginShow: false, // 登录按钮是否显示
-        checkNum: false, // 手机号正则验证
         countDown: false, // 验证码倒计时是否开始
-        password: '',
-        checkPwd: false,
+        checkPwd: false, // 验证第一次输入的密码
         checkPwd2: false // 验证二次输入的密码
       }
     },
     components: {
       ToolTip,
-      PhoneInput,
       PwdInput,
       CodeInput
     },
     methods: {
       handleCheckPwd (e) {
         if (!e.check) {
-          this.showNotice('密码格式不正确')
+          this.showNotice('密码只能输入6-20个字母、数字、下划线')
         }
       },
       handleCheckPwd2 (e) {
-        if (e.target.value === this.password) {
+        this.password2 = e.target.value
+        if (this.password2 === this.password) {
           this.checkPwd2 = true
         } else {
           this.checkPwd2 = false
@@ -77,37 +77,33 @@
         this.showLoginBtn()
       },
       handlePwd2Blur (e) {
-        if (e.target.value !== this.password) {
+        this.password2 = e.target.value
+        if (this.password2 !== this.password) {
           this.showNotice('两次密码输入不一致')
+          this.checkPwd2 = false
         }
       },
       handlePassword (e) {
         this.password = e.password
         this.checkPwd = e.check
+        if (this.password2 !== this.password) {
+          this.checkPwd2 = false
+        } else {
+          this.checkPwd2 = true
+        }
         this.showLoginBtn()
       },
       handleErrMiss () {
         this.errMessageShow = false
         this.errMessage = ''
       },
-      handleCodeShow (e) {
-        this.codeShow = e.codeShow
-        this.phoneNum = e.phoneNum
-        this.checkNum = this.$refs.phone.checkPhoneNum()
-        this.showLoginBtn()
-      },
       handleSendCode () {
         if (!this.countDown) {
-          if (this.$refs.phone.checkPhoneNum()) {
-            axios.post('/api/user/getVerCode/?format=json', {
-              tel: this.phoneNum
-            })
-            .then(this.handleSendCodeSucc.bind(this))
-            .catch(this.handleSendCodeErr.bind(this))
-          } else {
-            this.showNotice('请输入正确手机号')
-            this.codeShow = false
-          }
+          axios.post('/api/user/getVerCode/?format=json', {
+            tel: this.tel
+          })
+          .then(this.handleSendCodeSucc.bind(this))
+          .catch(this.handleSendCodeErr.bind(this))
         } else {
           this.showNotice('暂时无法发送')
         }
@@ -135,8 +131,7 @@
             }
           } else {
             this.sendCode = false
-            this.codeShow = false
-            this.showNotice(res.data.errMsg ? res.data.errMsg : '服务器错误，请检查您的手机号')
+            this.showNotice(res.data.errMsg ? res.data.errMsg : '服务器错误')
           }
         } else {
           this.showNotice('数据获取失败')
@@ -153,14 +148,12 @@
       handleLoginClick () {
         if (this.loginShow) {
           axios.post('/api/user/setPassword/?format=json', {
-            tel: this.phoneNum,
+            tel: this.tel,
             verCode: this.code,
             password: this.password
           })
           .then(this.handleLoginClickSucc.bind(this))
           .catch(this.handleLoginClickErr.bind(this))
-        } else if (!this.codeShow) {
-          this.showNotice('检查您的手机号是否正确')
         } else if (!this.sendCode) {
           this.showNotice('未成功发送验证码')
         } else if (!this.login) {
@@ -172,7 +165,7 @@
         }
       },
       showLoginBtn () {
-        if (this.login && this.sendCode && this.codeShow && this.checkPwd2 && this.checkPwd) {
+        if (this.login && this.sendCode && this.checkPwd2 && this.checkPwd) {
           this.loginShow = true
         } else {
           this.loginShow = false
@@ -215,6 +208,12 @@
       position: relative
       width: 100%
       padding-top: .35rem
+      .default-input
+        width: 100%
+        line-height: .8rem
+        font-size: .3rem
+        text-indent: .2rem
+        color: $lightFont
       .pwd2-input
         width: 100%
         line-height: .8rem

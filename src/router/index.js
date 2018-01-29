@@ -47,9 +47,10 @@ const router = new Router({
       props: true
     },
     {
-      path: '/change',
+      path: '/change/:tel',
       name: 'change',
-      component: Change
+      component: Change,
+      props: true
     },
     {
       path: '/corder',

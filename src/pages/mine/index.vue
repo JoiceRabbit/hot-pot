@@ -180,7 +180,7 @@
 
       handleGoChangePwd () {
         if (this.loginStatus) {
-          this.$router.push('/change')
+          this.$router.push('/change/' + this.userTel)
         }
       }
     },
