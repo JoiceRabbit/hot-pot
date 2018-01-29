@@ -28,16 +28,16 @@
           </div>
         </div>
       </div>
+      <transition enter-active-class="animated bounceInDown">
+      <div class="tip" v-if="show">
+        暂无评价
+      </div>
+    </transition>
     </div>
     <tool-tip :errMessage="errMessage"
               v-show="errMessageShow"
               @miss="handleErrMiss">
     </tool-tip>
-    <transition enter-active-class="animated bounceInDown">
-      <div class="tip" v-if="show">
-        暂无评价
-      </div>
-    </transition>
     <div class="footer"></div>
   </div>
 </template>
@@ -97,6 +97,9 @@
               const data = res.data.data
               this.show = false
               this.list = data
+              if (this.list.length === 0) {
+                this.show = true
+              }
             } else {
               this.show = true
               this.showNotice('数据获取失败')
@@ -199,7 +202,7 @@
               padding-right: .2rem
               color: #666
       .tip
-        margin: 2rem auto 0
+        margin: .5rem auto 0
         width: 5rem
         height: .8rem
         background: $bgColor

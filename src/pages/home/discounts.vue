@@ -52,7 +52,6 @@
     methods: {
       handleMoreDis (e) {
         if (e.target.innerHTML === '展开') {
-          // console.log(e.target.innerHTML)
           e.target.innerHTML = '收起'
           this.tempDisList = this.discountsList
         } else {
