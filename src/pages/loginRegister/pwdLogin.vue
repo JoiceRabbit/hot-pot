@@ -6,7 +6,8 @@
     </div>
     <div class="pwd-input-con">
       <pwd-input ref="password"
-                 @password="handlePassword"></pwd-input>
+                 @password="handlePassword"
+                 @check="handleCheckPwd"></pwd-input>
     </div>
     <p class="notice">温馨提示：忘记密码请选择<span class="message-login" @click="handleMessageClick">短信登录</span></p>
     <div class="login-btn" 
@@ -42,6 +43,11 @@
       ToolTip
     },
     methods: {
+      handleCheckPwd (e) {
+        if (!e.check) {
+          this.showNotice('密码格式不正确')
+        }
+      },
       handleErrMiss () {
         this.errMessageShow = false
         this.errMessage = ''

@@ -6,10 +6,13 @@
     </div>
     <div class="pwd-input-con">
       <pwd-input ref="password"
-                 @password="handlePassword"></pwd-input>
+                 @password="handlePassword"
+                 @check="handleCheckPwd"></pwd-input>
     </div>
     <div class="pwd-input-con">
-      <input @input="handleCheckPwd2" type="password" placeholder="确认密码" class="pwd2-input">
+      <input @input="handleCheckPwd2" 
+             @blur="handlePwd2Blur"
+             type="password" placeholder="确认密码" class="pwd2-input">
     </div>
     <div class="pwd-input-con">
       <code-input :codeShow="codeShow"
@@ -60,6 +63,11 @@
       CodeInput
     },
     methods: {
+      handleCheckPwd (e) {
+        if (!e.check) {
+          this.showNotice('密码格式不正确')
+        }
+      },
       handleCheckPwd2 (e) {
         if (e.target.value === this.password) {
           this.checkPwd2 = true
@@ -67,6 +75,11 @@
           this.checkPwd2 = false
         }
         this.showLoginBtn()
+      },
+      handlePwd2Blur (e) {
+        if (e.target.value !== this.password) {
+          this.showNotice('两次密码输入不一致')
+        }
       },
       handlePassword (e) {
         this.password = e.password

@@ -40,6 +40,7 @@
         handler () {
           if (this.shopOrderInfo.length > 4) {
             this.$refs.wrapper.style.height = '10.5rem'
+            console.log('watch : ' + this.scroller)
             bus.$emit('height', {
               value: '10.5rem'
             })
@@ -97,8 +98,10 @@
       }
     },
     mounted () {
+      console.log('mounted : ' + this.scroller)
       this.ch && (this.$refs.wrapper.style.height = this.ch)
       this.createScroll()
+      console.log('create : ' + this.scroller)
       bus.$on('cate', this.handleScrollEl)
       this.scroller && this.scroller.refresh()
     }

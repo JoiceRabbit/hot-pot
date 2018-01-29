@@ -4,7 +4,8 @@
            v-model="password" 
            type="password" 
            placeholder="密码:只能输入6-20个字母、数字、下划线 " 
-           @input="handlePwd">
+           @input="handlePwd"
+           @blur="handleCheck">
   </div>
 </template>
 
@@ -33,6 +34,18 @@
       },
       checkPwd () {
         return /^(\w){6,20}$/.test(this.password)
+      },
+      handleCheck (e) {
+        this.password = e.target.value
+        if (this.checkPwd()) {
+          this.$emit('check', {
+            check: true
+          })
+        } else {
+          this.$emit('check', {
+            check: false
+          })
+        }
       }
     }
   }

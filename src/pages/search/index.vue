@@ -12,7 +12,7 @@
       <span class="searchBtn">搜索</span> 
     </header>
     <div class="hot-con">
-      <div class="hot-title">热门搜素</div>
+      <div class="hot-title">热门搜索</div>
       <div class="hot-list">
         <div class="hot-list-item" v-for="item in hotList">{{item}}</div>
       </div>
@@ -135,12 +135,16 @@
         color: #666
         background: #f8f8f8
         padding-left: .1rem
+        display: flex
         .input-icon
+          padding-top: .05rem
           font-size: .4rem
           margin-right: .1rem
         .input-cont
           color: #666
           background: #f8f8f8
+          flex: 1
+          padding: 0 .1rem 
     .tip
       margin: 5rem auto 0
       width: 5rem

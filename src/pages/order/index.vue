@@ -77,7 +77,7 @@
             }
           }
         } else {
-          this.showNotice('服务器返回出错啦~')
+          this.showNotice('您还没有订单哦~')
         }
       },
       handleGetDataErr () {
