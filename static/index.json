@@ -1,0 +1,455 @@
+{
+  "ret": true,
+  "errMsg": "",
+  "data": {
+    "position": "北京市昌平区",
+    "sliders": [{ 
+        "id": "01",
+        "imgUrl": "/static/banner/1.jpg"
+    }, { 
+        "id": "02",
+        "imgUrl": "/static/banner/2.jpg"
+    }, { 
+        "id": "03",
+        "imgUrl": "/static/banner/3.jpg"
+    }],
+    "special": [{
+      "id": "qwer",
+      "imgUrl": "/static/images/special1.jpg",
+      "title": "重庆火锅重铸家庭温暖亲情"
+    }, {
+      "id": "qer",
+      "imgUrl": "/static/images/special2.jpg",
+      "title": "特色涮肉坊免费上门"
+    }, {
+      "id": "qr",
+      "imgUrl": "/static/images/special3.jpg",
+      "title": "鲜辣爽滑 唇齿留香"
+    }, {
+      "id": "qpwer",
+      "imgUrl": "/static/images/special4.jpg",
+      "title": "内蒙特产小羊肉 陪你一起嗨"
+    }],
+    "shopList": [{
+      "id": "001",
+      "logo": "//fuss10.elemecdn.com/3/7a/2c6604a0c9b614bb0915b584bb866jpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "456473",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "25436537",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "57473334",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }, {
+          "id": "5747334",
+          "desc": "优惠",
+          "show": false,
+          "cate": "赠"
+        }]  
+      }
+    }, {
+      "id": "002",
+      "logo": "//fuss10.elemecdn.com/6/83/b149aee471db91ed5d659b037d49djpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": false,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": false,
+        "discountList": [{
+          "id": "1",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "2",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }]  
+      }
+    }, {
+      "id": "003",
+      "logo": "//fuss10.elemecdn.com/1/24/b3fbf584f92303939ddd084c58ca1png.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "4",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "5",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "6",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "004",
+      "logo": "//fuss10.elemecdn.com/f/8c/a0243ff6b05f952b127524b5bf99ajpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "7",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "8",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "9",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "005",
+      "logo": "//fuss10.elemecdn.com/3/7a/2c6604a0c9b614bb0915b584bb866jpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "11",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "12",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "21",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "006",
+      "logo": "//fuss10.elemecdn.com/4/53/31c93e28ac34d18903fcd3ceef66dpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "22",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "1171",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "1111",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "007",
+      "logo": "//fuss10.elemecdn.com/d/ab/f6836c9688f7983e1b3e86ad7d55epng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "2222",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "2121",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "1212",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "008",
+      "logo": "//fuss10.elemecdn.com/b/d4/344b91ebfa4f7c6d33636aeb4019cjpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "2323",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "45",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "43",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "009",
+      "logo": "//fuss10.elemecdn.com/3/7a/2c6604a0c9b614bb0915b584bb866jpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "3465",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "342",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "3122",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "010",
+      "logo": "//fuss10.elemecdn.com/c/ce/7f9bdd78b21f934540732bb4658d3png.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "45654",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "5745",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "45635",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "011",
+      "logo": "//fuss10.elemecdn.com/3/30/846c2bd04662190817be8514f88fbpng.png?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "243234",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "352",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "098",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "012",
+      "logo": "//fuss10.elemecdn.com/3/7a/2c6604a0c9b614bb0915b584bb866jpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "88889",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "6765",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "090",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "013",
+      "logo": "//fuss10.elemecdn.com/6/d9/e7f132fd3d6e60f4a86b8b2b7aab8jpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "7686",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "6757",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "5878",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }, {
+      "id": "014",
+      "logo": "//fuss10.elemecdn.com/3/7a/2c6604a0c9b614bb0915b584bb866jpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/",
+      "name": "123",
+      "favComments": "99.1",
+      "orders": "123",
+      "startAmount": "15",
+      "trans": "6",
+      "praise": true,
+      "sendTime": "42",
+      "distance": "1.56",
+      "discount": {
+        "hasMore": true,
+        "discountList": [{
+          "id": "85675",
+          "desc": "满 50 减 30 ，满 100 减 10",
+          "show": true,
+          "cate": "减"
+        }, {
+          "id": "987978",
+          "desc": "下单立减 39 元，新人气满满小吃",
+          "show": true,
+          "cate": "首"
+        }, {
+          "id": "5674",
+          "desc": "特价59元！新五味小吃拼盘",
+          "show": false,
+          "cate": "特"
+        }]  
+      }
+    }]
+  }
+}

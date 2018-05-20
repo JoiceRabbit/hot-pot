@@ -66,7 +66,7 @@
       handleSendCode () {
         if (!this.countDown) {
           if (this.$refs.phone.checkPhoneNum()) {
-            axios.post('/api/user/getVerCode/?format=json', {
+            axios.post('/api/user/getVerCode', {
               tel: this.phoneNum
             })
             .then(this.handleSendCodeSucc.bind(this))

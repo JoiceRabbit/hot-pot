@@ -11,11 +11,26 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/': {
-            target: 'http://www.youngfit.cn',
-            changeOrigin: true
+        // '/': {
+        //     target: 'http://www.youngfit.cn',
+        //     changeOrigin: true
+        // },
+        '/api': {
+            target: 'http://localhost:8090',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/api': '/'
+            }
         }
     },
+    // proxyTable: {
+    //   '/api': {
+    //     target: 'http://localhost:8080',
+    //     pathRewrite: {
+    //       '^/api': '/static'
+    //     }
+    //   }
+    // },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

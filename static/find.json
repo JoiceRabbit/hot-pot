@@ -1,0 +1,45 @@
+{
+    "ret": true,
+    "errMsg": "",
+    "data": [{
+      "id": "1",
+      "title": "金币商城",
+      "desc": "0元好物在这里",
+      "imgUrl": "https://fuss10.elemecdn.com/8/38/9c9aea0e856149083d84af3444b78jpeg.jpeg?imageMogr/format/webp/"       
+    }, {
+      "id": "2",
+      "title": "免费流量",
+      "desc": "0元好物在这里",
+      "imgUrl": "https://fuss10.elemecdn.com/5/10/2351e989d4171479ba0d7b5c06053jpeg.jpeg?imageMogr/format/webp/"       
+    }, {
+      "id": "3",
+      "title": "必吃爆料",
+      "desc": "0元好物在这里",
+      "imgUrl": "https://fuss10.elemecdn.com/2/36/b784087aff96a97f4e5183d0d784fjpeg.jpeg?imageMogr/format/webp/"       
+    }, {
+      "id": "4",
+      "title": "推荐有奖",
+      "desc": "0元好物在这里",
+      "imgUrl": "https://fuss10.elemecdn.com/6/76/8d42eef97ff4c1c2b671085358541jpeg.jpeg?imageMogr/format/webp/"       
+    }, {
+      "id": "5",
+      "title": "百元红包",
+      "desc": "0元好物在这里",
+      "imgUrl": "https://fuss10.elemecdn.com/3/cc/a45d2b9d7d09bbc49b40d4e626093jpeg.jpeg?imageMogr/format/webp/"       
+    }, {
+      "id": "6",
+      "title": "周边优惠",
+      "desc": "0元好物在这里",
+      "imgUrl": "https://fuss10.elemecdn.com/5/10/2351e989d4171479ba0d7b5c06053jpeg.jpeg?imageMogr/format/webp/"       
+    }],
+    "imgs": [{
+      "id": "8",
+      "imgUrl": "/static/images/find1.jpg"
+    }, {
+      "id": "9",
+      "imgUrl": "/static/images/find2.jpg"
+    }, {
+      "id": "90",
+      "imgUrl": "/static/images/find2.jpg"
+    }]
+}
